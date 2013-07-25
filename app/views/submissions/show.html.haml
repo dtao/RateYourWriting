@@ -3,4 +3,4 @@
   .author=h @submission.user.name
 
 %article.submission
-  != submission_body(@submission)
+  != preserve(submission_body(@submission))
