@@ -1,0 +1,9 @@
+jack:
+  name: Jack
+  email: jack@rateyourwriting.com
+  password_digest: baloney
+
+jill:
+  name: Jill
+  email: jill@rateyourwriting.com
+  password_digest: meatloaf

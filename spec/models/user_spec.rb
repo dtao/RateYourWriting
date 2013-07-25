@@ -19,9 +19,10 @@ describe User do
   end
 
   it 'does not require name to be unique' do
-    User.create!(attributes)
-    User.create!(attributes.merge(:email => 'daniel.tao@yahoo.com'))
-    User.all.should have(2).users
+    lambda {
+      User.create!(attributes)
+      User.create!(attributes.merge(:email => 'daniel.tao@yahoo.com'))
+    }.should change(User, :count).by(2)
   end
 
   it 'requires an e-mail address' do
