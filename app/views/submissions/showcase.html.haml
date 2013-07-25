@@ -15,7 +15,7 @@
   %tbody
     - @submissions.each do |submission|
       %tr
-        %td
+        %td S
         %td= link_to(submission.title, submission)
         %td= submission.user.name
         %td= time_ago_in_words(submission.created_at)
