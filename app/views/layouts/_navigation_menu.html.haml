@@ -1,9 +1,9 @@
 %ul
-  %li.header Pages
+  %li.header Sections
   %li= link_to('Home', :controller => 'home', :action => 'index')
   %li= link_to('Showcase', :controller => 'submissions', :action => 'showcase')
 
-  %li.header Your Options
+  %li.header Account
   - if logged_in?
     %li= link_to('New submission', :controller => 'submissions', :action => 'new')
     %li= link_to('Log out', :controller => 'home', :action => 'logout')
