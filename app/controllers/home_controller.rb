@@ -27,6 +27,6 @@ class HomeController < ApplicationController
   def logout
     session.delete(:user_id)
     alert 'Successfully logged out.', :success
-    redirect_to :controller => 'home', :action => 'index'
+    redirect_to root_path
   end
 end

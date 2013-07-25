@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def login_user(user)
     session[:user_id] = user.id
-    redirect_to :controller => 'home', :action => 'index'
+    redirect_to root_path
   end
 
   def current_user
