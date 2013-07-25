@@ -14,7 +14,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.create!(submission_params)
     alert "Created submission '#{@submission.title}'!", :success
-    redirect_to :controller => 'home', :action => 'index'
+    redirect_to @submission
   end
 
   private
