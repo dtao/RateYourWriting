@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  def showcase
+  def index
     @submissions = Submission.all(:order => 'id desc', :limit => 30)
   end
 

@@ -1,12 +1,12 @@
 %ul
   %li.header Sections
   %li= link_to('Home', root_path)
-  %li= link_to('Showcase', :controller => 'submissions', :action => 'showcase')
+  %li= link_to('Latest Submissions', submissions_path)
 
   %li.header Account
   - if logged_in?
-    %li= link_to('New submission', :controller => 'submissions', :action => 'new')
-    %li= link_to('Log out', { :controller => 'home', :action => 'logout' }, { :'data-confirm' => 'Are you sure you want to log out? '})
+    %li= link_to('New submission', new_submission_path)
+    %li= link_to('Log out', logout_path, { :'data-confirm' => 'Are you sure you want to log out? '})
   - else
-    %li= link_to('Log in', :controller => 'home', :action => 'login')
-    %li= link_to('Register', :controller => 'home', :action => 'register')
+    %li= link_to('Log in', login_path)
+    %li= link_to('Register', register_path)
