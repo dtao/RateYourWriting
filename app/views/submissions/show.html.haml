@@ -1,6 +1,6 @@
-%article
-  %header
-    %h1=h @submission.title
-    .author=h @submission.user.name
+%header
+  %h1=h @submission.title
+  .author=h @submission.user.name
 
-  =h @submission.body
+%article.submission
+  != submission_body(@submission)

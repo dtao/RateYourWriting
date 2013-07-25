@@ -12,6 +12,9 @@ gem 'haml-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc2'
 
+# Use Markdown for formatting submission content
+gem 'redcarpet'
+
 # Use Bootstrap to get some UI going quickly
 gem 'bootstrap-sass-rails'
 

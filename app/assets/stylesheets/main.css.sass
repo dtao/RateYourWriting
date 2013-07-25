@@ -79,3 +79,13 @@ form
 
   input[type="submit"]
     @extend .btn, .btn-primary
+
+.author
+  @extend .lead
+
+  &:before
+    content: 'by '
+    font-size: 90%
+
+article.submission
+  margin-top: 20px
