@@ -1,24 +1,4 @@
 %header
   %h1 Writing Showcase
 
-%table.submissions
-  %thead
-    %tr
-      %th
-      %th Title
-      %th Writer
-      %th Submitted
-      %th Votes
-      %th Rating
-      %th Comments
-
-  %tbody
-    - @submissions.each do |submission|
-      %tr
-        %td S
-        %td= link_to(submission.title, submission)
-        %td= submission.user.name
-        %td= "#{time_ago_in_words(submission.created_at)} ago"
-        %td 0
-        %td 0
-        %td 0
+= submissions_table

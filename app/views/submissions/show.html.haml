@@ -1,6 +1,6 @@
 %header
   %h1=h @submission.title
-  .author=h @submission.user.name
+  .author= link_to(@submission.user.name, @submission.user)
 
 %article.submission
   != preserve(submission_body(@submission))

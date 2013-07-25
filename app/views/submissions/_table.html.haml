@@ -1,0 +1,23 @@
+%table.submissions
+  %thead
+    %tr
+      %th
+      %th Title
+      - unless without.include?(:writer)
+        %th Writer
+      %th Submitted
+      %th Votes
+      %th Rating
+      %th Comments
+
+  %tbody
+    - @submissions.each do |submission|
+      %tr
+        %td S
+        %td= link_to(submission.title, submission)
+        - unless without.include?(:writer)
+          %td= link_to(submission.user.name, submission.user)
+        %td= "#{time_ago_in_words(submission.created_at)} ago"
+        %td 0
+        %td 0
+        %td 0
