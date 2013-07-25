@@ -14,4 +14,7 @@
         %li= link_to('Showcase')
 
     %main
+      - if flash[:notice]
+        = alert(flash[:notice])
+
       = yield

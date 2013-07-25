@@ -51,6 +51,15 @@ main
   margin-right: 40px
   padding-top: 24px
 
+#notice
+  @extend .alert
+
+  &.success
+    @extend .alert-success
+
+  &.warning
+    @extend .alert-warning
+
 #news
   @extend .row-fluid
 
