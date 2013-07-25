@@ -1,0 +1,61 @@
+@import 'cerulean'
+@import 'twitter/bootstrap/responsive'
+
+@mixin backdrop($color, $opacity)
+  z-index: 1
+
+  &:before
+    display: block
+    content: ''
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: $color
+    opacity: $opacity
+    filter: alpha(opacity=($opacity * 100))
+    z-index: -1
+
+@mixin span($columns)
+  @extend .span#{$columns}, [class*="span"]
+
+nav
+  @include backdrop(#45aeea, 1)
+
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  width: 200px
+  padding-top: 24px
+  color: #fff
+
+  ul
+    @extend .nav, .nav-list
+
+    li.header
+      @extend .nav-header
+      color: #fff
+
+    li a
+      color: #fff
+
+header
+  p
+    @extend .lead
+
+main
+  @extend .container-fluid
+  margin-left: 240px
+  margin-right: 40px
+  padding-top: 24px
+
+#news
+  @extend .row-fluid
+
+  #daily-news
+    @include span(6)
+
+  #site-news
+    @include span(6)
