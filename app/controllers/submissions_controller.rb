@@ -5,6 +5,7 @@ class SubmissionsController < ApplicationController
 
   def show
     @submission = Submission.find(params[:id])
+    @current_vote = logged_in? && current_user.vote_for(@submission).try(:rating)
   end
 
   def new
@@ -12,9 +13,22 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Submission.create!(submission_params)
-    alert "Created submission '#{@submission.title}'!", :success
-    redirect_to @submission
+    submission = Submission.create!(submission_params)
+    alert "Created submission '#{submission.title}'!", :success
+    redirect_to submission
+  end
+
+  def vote
+    submission = Submission.find(params[:id])
+
+    vote = Vote.create!({
+      :user => current_user,
+      :submission => submission,
+      :rating => params[:rating]
+    })
+
+    alert "Rated '#{submission.title}' a #{params[:rating]}."
+    redirect_to submission
   end
 
   private

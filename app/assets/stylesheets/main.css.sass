@@ -96,3 +96,14 @@ article.submission
 
   p
     white-space: pre
+
+span.rating a
+  @extend .badge
+
+  color: #fff
+
+  &:hover
+    @extend .badge-info
+
+span.current a
+  @extend .badge-success

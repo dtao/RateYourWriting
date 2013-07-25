@@ -37,4 +37,19 @@ describe User do
     User.create!(attributes)
     lambda { User.create!(attributes) }.should raise_error
   end
+
+  describe '#vote_for' do
+    it 'finds the vote a user placed for a submission' do
+      jack = users(:jack)
+      jills_story = submissions("Jill's Story")
+
+      jack.vote_for(jills_story).should be_nil
+      jack.vote!(jills_story, 8)
+
+      vote = jack.vote_for(jills_story)
+      vote.user.should == jack
+      vote.submission.should == jills_story
+      vote.rating.should == 8
+    end
+  end
 end

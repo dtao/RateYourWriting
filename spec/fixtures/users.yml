@@ -7,3 +7,8 @@ jill:
   name: Jill
   email: jill@rateyourwriting.com
   password_digest: meatloaf
+
+bill:
+  name: Bill
+  email: bill@rateyourwriting.com
+  password_digest: provolone

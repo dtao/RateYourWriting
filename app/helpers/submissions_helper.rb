@@ -10,4 +10,8 @@ module SubmissionsHelper
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     @markdown.render(submission.body)
   end
+
+  def voting_section
+    render(:partial => 'voting')
+  end
 end

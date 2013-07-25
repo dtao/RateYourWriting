@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130725162610) do
+ActiveRecord::Schema.define(version: 20130725230937) do
 
   create_table "submissions", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20130725162610) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "votes_count",                         default: 0
+    t.decimal  "rating",      precision: 4, scale: 2, default: 0.0
   end
 
   add_index "submissions", ["user_id"], name: "index_submissions_on_user_id"
@@ -32,5 +34,13 @@ ActiveRecord::Schema.define(version: 20130725162610) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer "user_id"
+    t.integer "submission_id"
+    t.integer "rating"
+  end
+
+  add_index "votes", ["submission_id"], name: "index_votes_on_submission_id"
 
 end

@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Submission do
-  fixtures :users
-
   let(:attributes) {
     {
       :user => users(:jack),
@@ -33,5 +31,22 @@ describe Submission do
 
   it 'requires a body' do
     lambda { Submission.create!(attributes.except(:body)) }.should raise_error
+  end
+
+  it 'maintains a counter cache for vote count' do
+    jills_story = submissions("Jill's Story")
+    lambda {
+      users(:jack).vote!(jills_story, 8)
+      jills_story.reload
+    }.should change(jills_story, :votes_count).by(1)
+  end
+
+  it 'maintains a cached average rating' do
+    jills_story = submissions("Jill's Story")
+    users(:jack).vote!(jills_story, 8)
+    users(:bill).vote!(jills_story, 7)
+
+    jills_story.reload
+    jills_story.rating.should == 7.5
   end
 end

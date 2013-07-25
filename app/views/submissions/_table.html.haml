@@ -18,6 +18,6 @@
         - unless without.include?(:writer)
           %td= link_to(submission.user.name, submission.user)
         %td= "#{time_ago_in_words(submission.created_at)} ago"
-        %td 0
-        %td 0
+        %td= submission.votes_count
+        %td= number_with_precision(submission.rating, :precision => 2)
         %td 0
