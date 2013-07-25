@@ -1,6 +1,9 @@
 @import "cerulean"
 @import "twitter/bootstrap/responsive"
 
+$lightBlue: #45aeea
+$darkBlue: rgb(3, 68, 130)
+
 @mixin backdrop($color, $opacity)
   z-index: 1
 
@@ -21,7 +24,7 @@
   @extend .span#{$columns}, [class*="span"]
 
 nav
-  @include backdrop(#45aeea, 1)
+  @include backdrop($lightBlue, 1)
 
   position: absolute
   top: 0
@@ -36,6 +39,7 @@ nav
 
     li.header
       @extend .nav-header
+      background-color: $darkBlue
       color: #fff
 
     li a
