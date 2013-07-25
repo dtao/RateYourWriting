@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   def showcase
-    @submissions = Submission.all
+    @submissions = Submission.all(:order => 'id desc', :limit => 30)
   end
 
   def show
