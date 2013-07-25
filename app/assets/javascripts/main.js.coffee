@@ -4,7 +4,6 @@ onReady = ->
     if !confirm(confirmationMessage)
       return false
 
-$(document).ready ->
-  onReady()
+$(document).ready onReady
 
 $(document).on 'page:change', onReady
