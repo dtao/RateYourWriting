@@ -16,9 +16,8 @@ class HomeController < ApplicationController
         return redirect_to :action => 'login'
       end
 
-      session[:user_id] = user.id
-      alert "Successfully logged in as #{user.name}!", :success
-      redirect_to :controller => 'home', :action => 'index'
+      alert "Welcome back, #{user.name}!", :success
+      login_user(user)
     end
   end
 

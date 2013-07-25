@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def create
     user = User.create!(user_params)
-    alert "Registered user with e-mail address #{user.email}!", :success
-    redirect_to :controller => 'home', :action => 'index'
+    alert "Welcome to RateYourWriting, #{user.name}!", :success
+    return login_user(user)
   end
 
   private

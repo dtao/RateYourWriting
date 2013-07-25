@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def login_user(user)
+    session[:user_id] = user.id
+    redirect_to :controller => 'home', :action => 'index'
+  end
+
   def current_user
     # Check a flag instead of @current_user directly since otherwise if the user is not logged in
     # we'll keep querying the DB every time this method is called.
