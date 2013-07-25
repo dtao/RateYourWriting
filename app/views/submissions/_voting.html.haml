@@ -1,9 +1,12 @@
 = form_tag(:action => 'vote') do
   %fieldset
     %legend Vote Now
-    = hidden_field_tag :rating
-    - (1..10).each do |rating|
-      - if rating == @current_vote
-        %span.rating.current= submit_link(rating, 'rating', rating)
-      - else
-        %span.rating= submit_link(rating, 'rating', rating)
+    - if !logged_in?
+      %p!= "You must #{link_to('log in', login_path)} to vote!"
+    - else
+      = hidden_field_tag :rating
+      - (1..10).each do |rating|
+        - if rating == @current_vote
+          %span.rating.current= submit_link(rating, 'rating', rating)
+        - else
+          %span.rating= submit_link(rating, 'rating', rating)
