@@ -8,10 +8,7 @@
 
   %body
     %nav
-      %ul
-        %li.header Pages
-        %li= link_to('Home')
-        %li= link_to('Showcase')
+      = navigation_menu
 
     %main
       - if flash[:notice]

@@ -1,0 +1,24 @@
+%header
+  %h1 Writing Showcase
+
+%table.submissions
+  %thead
+    %tr
+      %th
+      %th Title
+      %th Writer
+      %th Date/Time
+      %th Votes
+      %th Rating
+      %th Comments
+
+  %tbody
+    - @submissions.each do |submission|
+      %tr
+        %td
+        %td= link_to(submission.title, submission)
+        %td= submission.user.name
+        %td= time_ago_in_words(submission.created_at)
+        %td 0
+        %td 0
+        %td 0

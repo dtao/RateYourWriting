@@ -1,5 +1,5 @@
-@import 'cerulean'
-@import 'twitter/bootstrap/responsive'
+@import "cerulean"
+@import "twitter/bootstrap/responsive"
 
 @mixin backdrop($color, $opacity)
   z-index: 1
@@ -51,6 +51,9 @@ main
   margin-right: 40px
   padding-top: 24px
 
+table
+  @extend .table
+
 #notice
   @extend .alert
 
@@ -68,3 +71,11 @@ main
 
   #site-news
     @include span(6)
+
+form
+  #submission_title,
+  #submission_body
+    @extend .input-block-level
+
+  input[type="submit"]
+    @extend .btn, .btn-primary
