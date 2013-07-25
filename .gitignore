@@ -14,6 +14,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore submissions used for seeding (copyright and all that).
+/db/submissions
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
