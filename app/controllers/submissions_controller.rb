@@ -41,6 +41,6 @@ class SubmissionsController < ApplicationController
   private
 
   def submission_params
-    params.required(:submission).permit(:title, :body).merge(:user => current_user)
+    params.required(:submission).permit(:kind, :title, :body).merge(:user => current_user)
   end
 end
