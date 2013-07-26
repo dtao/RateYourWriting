@@ -17,4 +17,8 @@ module SubmissionsHelper
   def voting_section
     render(:partial => 'voting')
   end
+
+  def comments_section
+    render(:partial => 'comments')
+  end
 end

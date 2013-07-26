@@ -2,6 +2,7 @@ class Submission < ActiveRecord::Base
   belongs_to :user
 
   has_many :votes
+  has_many :comments
 
   validates_presence_of :user_id
   validates_inclusion_of :kind, :in => ['P', 'S', 'B']

@@ -13,6 +13,7 @@ class SubmissionsController < ApplicationController
   def show
     @submission = Submission.find(params[:id])
     @current_vote = logged_in? && current_user.vote_for(@submission).try(:rating)
+    @comments = @submission.comments(:order => 'id asc')
   end
 
   def new
@@ -34,7 +35,20 @@ class SubmissionsController < ApplicationController
       :rating => params[:rating]
     })
 
-    alert "Rated '#{submission.title}' a #{params[:rating]}."
+    alert "Rated '#{submission.title}' a #{params[:rating]}.", :success
+    redirect_to submission
+  end
+
+  def comment
+    submission = Submission.find(params[:id])
+
+    comment = Comment.create!({
+      :user => current_user,
+      :submission => submission,
+      :content => params[:comment]
+    })
+
+    alert "Commented on '#{submission.title}'.", :success
     redirect_to submission
   end
 

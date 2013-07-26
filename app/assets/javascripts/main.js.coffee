@@ -19,6 +19,11 @@ onReady = ->
     # Prevent this link from going where it would otherwise go
     return false
 
+  $('button[data-reveal]').on 'click', ->
+    target = $(this).data('reveal')
+    $(target).show()
+    return false
+
 $(document).ready onReady
 
 $(document).on 'page:change', onReady

@@ -10,3 +10,12 @@
           %span.rating.current= submit_link(rating, 'rating', rating)
         - else
           %span.rating= submit_link(rating, 'rating', rating)
+
+    %button.leave-comment(data-reveal=".new-comment") Comment
+
+= form_tag(comment_url(@submission), :class => 'new-comment', :style => 'display: none;') do
+  .field
+    = text_area_tag :comment
+
+  .actions
+    = submit_tag 'Submit'
