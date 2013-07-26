@@ -1,9 +1,12 @@
-= form_tag(:action => 'vote') do
+- if !logged_in?
   %fieldset
     %legend Vote Now
-    - if !logged_in?
-      %p!= "You must #{link_to('log in', login_path)} to vote!"
-    - else
+    %p!= "You must #{link_to('log in', login_path)} to vote!"
+
+- else
+  = form_tag(:action => 'vote') do
+    %fieldset
+      %legend Vote Now
       = hidden_field_tag :rating
       - (1..10).each do |rating|
         - if rating == @current_vote
@@ -11,11 +14,11 @@
         - else
           %span.rating= submit_link(rating, 'rating', rating)
 
-    %button.leave-comment(data-reveal=".new-comment") Comment
+      %button.leave-comment(data-reveal=".new-comment") Comment
 
-= form_tag(comment_url(@submission), :class => 'new-comment', :style => 'display: none;') do
-  .field
-    = text_area_tag :comment
+  = form_tag(comment_url(@submission), :class => 'new-comment', :style => 'display: none;') do
+    .field
+      = text_area_tag :comment
 
-  .actions
-    = submit_tag 'Submit'
+    .actions
+      = submit_tag 'Submit'
