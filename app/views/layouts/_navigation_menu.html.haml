@@ -2,6 +2,8 @@
   %li.header Sections
   %li= link_to('Home', root_path)
   %li= link_to('Latest Submissions', submissions_path)
+  %li= link_to('Latest Poems', submissions_path(:kind => 'P'))
+  %li= link_to('Latest Short Stories', submissions_path(:kind => 'S'))
 
   %li.header Account
   - if logged_in?

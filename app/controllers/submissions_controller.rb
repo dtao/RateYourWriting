@@ -1,6 +1,13 @@
 class SubmissionsController < ApplicationController
   def index
-    @submissions = Submission.all(:order => 'id desc', :limit => 30)
+    options = {
+      :order => 'id desc',
+      :limit => 30
+    }
+
+    options[:conditions] = { :kind => params[:kind] } if params.include?(:kind)
+
+    @submissions = Submission.all(options)
   end
 
   def show
