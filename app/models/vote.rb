@@ -9,9 +9,9 @@ class Vote < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => :submission_id, :message => 'already voted for this submission'
   validates_exclusion_of :user_id, :in => lambda { |vote| [vote.submission.user_id] }, :message => 'cannot vote for your own submission'
 
-  after_save :update_submission_rating
+  after_save :update_submission
 
-  def update_submission_rating
-    self.submission.update_rating!
+  def update_submission
+    self.submission.vote_added!(self)
   end
 end

@@ -41,3 +41,9 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+RSpec::Matchers.define :match_time do |expected|
+  match do |actual|
+    expected.to_i == actual.to_i
+  end
+end

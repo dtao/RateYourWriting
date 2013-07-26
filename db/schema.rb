@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20130726063236) do
     t.integer  "votes_count",                            default: 0
     t.integer  "comments_count",                         default: 0
     t.decimal  "rating",         precision: 4, scale: 2, default: 0.0
+    t.datetime "last_vote"
+    t.datetime "last_comment"
   end
 
   add_index "submissions", ["kind"], name: "index_submissions_on_kind"
@@ -51,9 +53,11 @@ ActiveRecord::Schema.define(version: 20130726063236) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
   create_table "votes", force: true do |t|
-    t.integer "user_id"
-    t.integer "submission_id"
-    t.integer "rating"
+    t.integer  "user_id"
+    t.integer  "submission_id"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "votes", ["submission_id"], name: "index_votes_on_submission_id"

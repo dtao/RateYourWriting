@@ -58,4 +58,20 @@ describe Submission do
     jills_story.reload
     jills_story.rating.should == 7.5
   end
+
+  it 'maintains a cached timestamp of the last vote cast' do
+    jills_story = submissions("Jill's Story")
+    jacks_vote = users(:jack).vote!(jills_story, 8)
+
+    jills_story.reload
+    jills_story.last_vote.should match_time(jacks_vote.created_at)
+  end
+
+  it 'maintains a cached timestamp of the last comment shared' do
+    jills_story = submissions("Jill's Story")
+    jacks_comment = users(:jack).comment!(jills_story, "Well done")
+
+    jills_story.reload
+    jills_story.last_comment.should match_time(jacks_comment.created_at)
+  end
 end

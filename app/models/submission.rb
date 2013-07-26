@@ -34,8 +34,14 @@ class Submission < ActiveRecord::Base
     end
   end
 
-  def update_rating!
-    self.rating = self.votes.average(:rating)
-    self.save!
+  def vote_added!(vote)
+    self.update_attributes({
+      :rating => self.votes.average(:rating),
+      :last_vote => vote.created_at
+    })
+  end
+
+  def comment_added!(comment)
+    self.update_attributes(:last_comment => comment.created_at)
   end
 end

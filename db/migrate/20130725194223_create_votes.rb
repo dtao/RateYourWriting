@@ -4,6 +4,7 @@ class CreateVotes < ActiveRecord::Migration
       t.integer :user_id
       t.integer :submission_id
       t.integer :rating
+      t.timestamps
     end
 
     add_index :votes, :submission_id
