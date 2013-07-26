@@ -24,6 +24,11 @@ onReady = ->
     $(target).show()
     return false
 
+  $('button[data-dismiss-closest]').on 'click', ->
+    target = $(this).data('dismiss-closest')
+    $(target).hide()
+    return false
+
 $(document).ready onReady
 
 $(document).on 'page:change', onReady

@@ -95,6 +95,21 @@ footer
 table
   @extend .table, .table-striped, .table-hover
 
+#notice
+  @extend .modal
+
+  header
+    @extend .modal-header
+
+  .content
+    @extend .modal-body
+
+  .actions
+    @extend .modal-footer
+
+    button
+      @extend .btn
+
 aside.notes
   &:before
     content: "Notes:"
