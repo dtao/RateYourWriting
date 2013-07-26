@@ -1,9 +1,11 @@
 Jack's Story:
   user: jack
+  kind: S
   title: Jack's Story
   body: This is Jack's story.
 
 Jill's Story:
   user: jill
+  kind: S
   title: Jill's Story
   body: This is Jill's story.

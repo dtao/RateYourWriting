@@ -4,6 +4,7 @@ describe Submission do
   let(:attributes) {
     {
       :user => users(:jack),
+      :kind => 'S',
       :title => 'My First Submission',
       :body => 'The quick brown fox jumped over the lazy dogs.'
     }
