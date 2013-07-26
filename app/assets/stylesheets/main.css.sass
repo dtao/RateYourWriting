@@ -148,6 +148,7 @@ form
   @include inputLike
 
   font-family: "Source Code Pro", monospace
+  cursor: text
 
 .CodeMirror-empty
   color: #888
@@ -192,6 +193,9 @@ span.rating a
 
 span.current a
   @extend .badge-success
+
+form.new-comment
+  @extend .well
 
 button.leave-comment
   @extend .btn-mini

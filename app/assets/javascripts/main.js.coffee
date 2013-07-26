@@ -21,7 +21,7 @@ onReady = ->
 
   $('button[data-reveal]').on 'click', ->
     target = $(this).data('reveal')
-    $(target).show()
+    $(target).slideDown()
     return false
 
   $('button[data-dismiss-closest]').on 'click', ->
