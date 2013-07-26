@@ -1,6 +1,8 @@
 @import "cerulean"
 @import "twitter/bootstrap/responsive"
 
+@import url("http://fonts.googleapis.com/css?family=Source+Code+Pro")
+
 $lightBlue: #45aeea
 $darkBlue: rgb(3, 68, 130)
 
@@ -22,6 +24,23 @@ $darkBlue: rgb(3, 68, 130)
 
 @mixin span($columns)
   @extend .span#{$columns}, [class*="span"]
+
+@mixin inputLike
+  border: 1px solid #cccccc
+  border-radius: 4px
+  box-sizing: border-box
+  margin-bottom: 10px
+  padding: 4px 6px
+
+@mixin focusedInputLike
+  border-color: rgba(82, 168, 236, 0.8)
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s
+  transition: border linear 0.2s, box-shadow linear 0.2s
 
 nav
   @include backdrop($lightBlue, 1)
@@ -99,6 +118,17 @@ form
 
   input[type="submit"]
     @extend .btn, .btn-primary
+
+.CodeMirror
+  @include inputLike
+
+  font-family: "Source Code Pro", monospace
+
+.CodeMirror-empty
+  color: #888
+
+.CodeMirror-focused
+  @include focusedInputLike
 
 table.submissions
   .kind

@@ -15,6 +15,9 @@ gem 'sass-rails', '~> 4.0.0.rc2'
 # Use Markdown for formatting submission content
 gem 'redcarpet'
 
+# Use CodeMirror for editing submissions
+gem 'codemirror-rails'
+
 # Use Bootstrap to get some UI going quickly
 gem 'bootstrap-sass-rails'
 

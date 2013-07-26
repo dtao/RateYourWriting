@@ -1,4 +1,8 @@
 onReady = ->
+  $('.editor').each ->
+    CodeMirror.fromTextArea this,
+      mode: 'markdown'
+
   $('a[data-submit]').on 'click', ->
     link = $(this)
     form = link.closest('form')
