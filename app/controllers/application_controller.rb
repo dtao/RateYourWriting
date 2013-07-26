@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  rescue_from Exception, :with => :handle_exception
+  rescue_from ActiveRecord::RecordInvalid, :with => :handle_exception
 
   helper_method :current_user, :logged_in?
 
@@ -35,16 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_exception(exception)
-    session[:exceptions] ||= 0
-    session[:exceptions] += 1
-
-    if session[:exceptions] < 2
-      alert exception.message, :error
-      redirect_to request.referrer || root_path
-
-    else
-      session[:exceptions] = 0
-      redirect_to '/500.html'
-    end
+    alert exception.message, :error
+    redirect_to request.referrer || root_path
   end
 end
