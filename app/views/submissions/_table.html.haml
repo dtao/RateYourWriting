@@ -16,10 +16,14 @@
         %td.kind= submission.kind
         %td.title
           = link_to(submission.title, submission)
-          = "(#{submission.length})"
+          = "(#{submission.word_count})"
         - unless without.include?(:writer)
           %td.writer= link_to(submission.user.name, submission.user)
         %td.submitted= "#{time_ago_in_words(submission.created_at)} ago"
         %td.votes= submission.votes_count
         %td.rating= number_with_precision(submission.rating, :precision => 2)
         %td.comments 0
+
+%aside.kinds
+  - Submission::KINDS.each do |description, code|
+    %span= "#{code} - #{description}"

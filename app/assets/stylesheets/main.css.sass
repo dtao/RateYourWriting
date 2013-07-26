@@ -90,6 +90,21 @@ footer
 table
   @extend .table, .table-striped, .table-hover
 
+aside.notes
+  &:before
+    content: "Notes:"
+    display: block
+    font-weight: bold
+
+aside.kinds
+  text-align: center
+
+  span
+    @extend small, .muted
+
+    &:nth-child(n+2):before
+      content: " | "
+
 #notice
   @extend .alert
 

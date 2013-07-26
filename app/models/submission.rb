@@ -19,6 +19,10 @@ class Submission < ActiveRecord::Base
     ['Book Excerpt', 'B']
   ]
 
+  def word_count
+    (self.length / 5).to_i
+  end
+
   def set_length
     if self.body_changed?
       self.length = self.body.length
