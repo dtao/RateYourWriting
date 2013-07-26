@@ -5,13 +5,26 @@
 %section#news
   %section#daily-news
     %h2 Daily news
+
     %p
       The original RYW had interesting daily news here, presumably related to
       topics that writers would find interesting. In practice I think it was just
       stuff the guy who made the site found interesting.
+
+    - @daily_news.each do |item|
+      = render_news_item(item)
+
+    - if logged_in? && current_user.admin?
+      %p= link_to('Post a new story', new_news_item_path, :class => 'new-story')
 
   %section#site-news
     %h2 Site news
     %p
       There was also a section for news about the site itself: upgrades, new
       features, etc.
+
+    - @site_news.each do |item|
+      = render_news_item(item)
+
+    - if logged_in? && current_user.admin?
+      %p= link_to('Post a new story', new_news_item_path, :class => 'new-story')

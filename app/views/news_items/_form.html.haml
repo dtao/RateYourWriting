@@ -1,0 +1,5 @@
+= form_for(@news_item) do |f|
+  = f.select :kind, NewsItem::KINDS
+  = f.text_field :headline, :placeholder => 'Enter a headline'
+  = f.text_area :content, :class => 'editor', :placeholder => 'Write the content of the news item'
+  = f.submit 'Post'

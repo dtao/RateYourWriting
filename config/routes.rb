@@ -21,6 +21,7 @@ RateYourWriting::Application.routes.draw do
   #   resources :products
   resources :users
   resources :submissions
+  resources :news_items
 
   # Example resource route with options:
   #   resources :products do

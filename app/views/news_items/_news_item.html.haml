@@ -1,0 +1,12 @@
+.news-item
+  %header
+    %h1= item.headline
+
+  .content
+    != to_markdown(item.content)
+
+  %footer
+    Posted by
+    = item.user.name
+    = time_ago_in_words(item.created_at)
+    ago

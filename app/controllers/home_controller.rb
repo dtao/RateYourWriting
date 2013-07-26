@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
+    @daily_news = NewsItem.daily.latest
+    @site_news = NewsItem.site.latest
   end
 
   def login
