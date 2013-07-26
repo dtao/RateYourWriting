@@ -29,6 +29,9 @@ onReady = ->
     $(target).hide()
     return false
 
+  $('#preferences_theme').on 'change', ->
+    $('#theme-preview iframe').attr('src', "#{window.location.origin}/?theme=#{this.value}")
+
 $(document).ready onReady
 
 $(document).on 'page:change', onReady

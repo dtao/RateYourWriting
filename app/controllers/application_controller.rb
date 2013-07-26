@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_filter :set_theme
+
   rescue_from ActiveRecord::RecordInvalid, :with => :handle_exception
 
   helper_method :current_user, :logged_in?, :is_new_for_user?
@@ -43,5 +45,15 @@ class ApplicationController < ActionController::Base
   def handle_exception(exception)
     alert exception.message, :error
     redirect_to request.referrer || root_path
+  end
+
+  def set_theme
+    if params.include?(:theme) && UserPreferences::THEMES.include?(params[:theme])
+      @theme = params[:theme]
+    elsif logged_in? && current_user.preferences
+      @theme = current_user.preferences.theme
+    else
+      @theme = UserPreferences::DEFAULT_THEME
+    end
   end
 end

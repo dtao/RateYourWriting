@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_one  :preferences, :class_name => 'UserPreferences'
   has_many :submissions
   has_many :votes
   has_many :comments

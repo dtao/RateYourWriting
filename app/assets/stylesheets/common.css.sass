@@ -1,29 +1,38 @@
-@import "cerulean"
-@import "twitter/bootstrap/responsive"
-
 @import url("http://fonts.googleapis.com/css?family=Source+Code+Pro")
 
-$lightBlue: #45aeea
-$darkBlue: rgb(3, 68, 130)
+@mixin fillParent
+  display: block
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  height: 100%
+  width: 100%
+
+@mixin translucent($opacity)
+  opacity: $opacity
+  filter: alpha(opacity=($opacity * 100))
 
 @mixin backdrop($color, $opacity)
+  @include fillParent
+
   z-index: 1
 
   &:before
+    @include translucent($opacity)
+
     display: block
     content: ''
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
     background-color: $color
-    opacity: $opacity
-    filter: alpha(opacity=($opacity * 100))
     z-index: -1
 
 @mixin span($columns)
   @extend .span#{$columns}, [class*="span"]
+
+@mixin borderBox
+  -moz-box-sizing: border-box
+  box-sizing: border-box
 
 @mixin inputLike
   border: 1px solid #cccccc
@@ -43,15 +52,13 @@ $darkBlue: rgb(3, 68, 130)
   transition: border linear 0.2s, box-shadow linear 0.2s
 
 nav
-  @include backdrop($lightBlue, 1)
+  @extend .well
 
   position: fixed
-  top: 0
-  bottom: 0
-  left: 0
+  top: 24px
+  left: 40px
   width: 200px
-  padding-top: 24px
-  color: #fff
+  padding: 8px 0
 
   ul
     @extend .nav, .nav-list
@@ -61,12 +68,9 @@ nav
 
     li.header
       @extend .nav-header
-      background-color: $darkBlue
-      color: #fff
       text-shadow: none
 
     li a
-      color: #fff
       text-shadow: none
 
 header
@@ -74,22 +78,18 @@ header
     @extend .lead
 
 main
-  @extend .container-fluid
-  margin-left: 240px
-  margin-right: 40px
+  @extend .container
+  margin-left: 280px
   padding-top: 24px
   padding-bottom: 64px
 
 footer
-  @include backdrop($darkBlue, 0.75)
-
   position: fixed
   bottom: 0
-  left: 200px
+  left: 280px
   right: 0
   height: 40px
   padding: 0 1em
-  color: #fff
   line-height: 40px
 
 table
@@ -148,18 +148,25 @@ form
     @extend .btn-inverse
 
 .CodeMirror
-  @include inputLike
+  @extend textarea
+  @include borderBox
 
+  display: block
+  width: 100%
   font-family: "Source Code Pro", monospace
   cursor: text
 
 .CodeMirror-empty
-  color: #888
+  color: #888 !important
 
 .CodeMirror-focused
-  @include focusedInputLike
+  @extend textarea:focus
 
 table.submissions
+  th, td
+    text-overflow: ellipsis
+    white-space: nowrap
+
   .kind
     width: 6%
 
@@ -231,3 +238,40 @@ button.leave-comment
 
   &:nth-of-type(even)
     background-color: #e5e5e5
+
+#theme-preview
+  position: relative
+  height: 600px
+  width: 100%
+
+  iframe
+    @include fillParent
+    border: none
+    overflow: hidden
+
+  &:before
+    @include fillParent
+    @include translucent(0.1)
+
+    content: ''
+    background-color: #fff
+    z-index: 1
+
+  &:after
+    @include translucent(0.75)
+
+    display: block
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    height: 100px
+    margin-top: -50px
+    line-height: 100px
+    content: 'Preview'
+
+    background-color: #eee
+    color: #000
+    font-size: 64px
+    text-align: center
+    z-index: 2

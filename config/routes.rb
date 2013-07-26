@@ -8,6 +8,7 @@ RateYourWriting::Application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   match 'login' => 'home#login', :via => [:get, :post]
+  match 'preferences' => 'home#preferences', :via => [:get, :post, :patch]
   get 'register' => 'home#register'
   get 'logout' => 'home#logout'
 
