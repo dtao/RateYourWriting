@@ -14,5 +14,6 @@ class CreateSubmissions < ActiveRecord::Migration
     end
 
     add_index :submissions, :user_id
+    add_index :submissions, :kind
   end
 end
