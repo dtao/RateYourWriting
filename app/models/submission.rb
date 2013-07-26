@@ -7,6 +7,8 @@ class Submission < ActiveRecord::Base
     'Other (e.g., essay)' => 'O'
   }
 
+  KIND_LOOKUP = KINDS.invert
+
   belongs_to :user
 
   has_many :votes

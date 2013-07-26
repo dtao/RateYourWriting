@@ -1,5 +1,5 @@
 %header
-  %h1 Latest Submissions
+  %h1= "Latest #{params[:kind] && Submission::KIND_LOOKUP[params[:kind]].try(:pluralize) || 'Submissions'}"
 
 %aside.notes
   %p The number after the title of the piece is an APPROXIMATE total number of words in the entry.
