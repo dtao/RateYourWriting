@@ -20,9 +20,9 @@
         - unless without.include?(:writer)
           %td.writer= link_to(submission.user.name, submission.user)
         %td.submitted= "#{time_ago_in_words(submission.created_at)} ago"
-        %td.votes= submission.votes_count
+        %td.votes!= highlight(submission.votes_count, :if => is_new_for_user?(submission.last_vote))
         %td.rating= number_with_precision(submission.rating, :precision => 2)
-        %td.comments= submission.comments_count
+        %td.comments!= highlight(submission.comments_count, :if => is_new_for_user?(submission.last_comment))
 
 %aside.kinds
   - Submission::KINDS.each do |description, code|

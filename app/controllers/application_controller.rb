@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordInvalid, :with => :handle_exception
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :is_new_for_user?
 
   def alert(message, type=:info)
     flash[:notice] = {
@@ -33,6 +33,11 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
+  end
+
+  def is_new_for_user?(time, user=nil)
+    user ||= current_user
+    time.present? && logged_in? && time > current_user.last_login - 5.minutes
   end
 
   def handle_exception(exception)

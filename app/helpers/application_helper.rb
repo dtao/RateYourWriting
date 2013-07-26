@@ -18,4 +18,14 @@ module ApplicationHelper
 
     @markdown.render(text)
   end
+
+  def highlight(content, options=nil)
+    options ||= {}
+
+    if ([nil, true].include?(options[:if]))
+      return %Q[<span class="highlight">#{html_escape(content)}</span>]
+    end
+
+    content
+  end
 end
