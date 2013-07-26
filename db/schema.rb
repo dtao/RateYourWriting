@@ -15,10 +15,12 @@ ActiveRecord::Schema.define(version: 20130725230937) do
 
   create_table "submissions", force: true do |t|
     t.integer  "user_id"
+    t.string   "kind"
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "length"
     t.integer  "votes_count",                         default: 0
     t.decimal  "rating",      precision: 4, scale: 2, default: 0.0
   end

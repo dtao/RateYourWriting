@@ -13,8 +13,10 @@
   %tbody
     - @submissions.each do |submission|
       %tr
-        %td S
-        %td= link_to(submission.title, submission)
+        %td= submission.kind
+        %td
+          = link_to(submission.title, submission)
+          = "(#{submission.length})"
         - unless without.include?(:writer)
           %td= link_to(submission.user.name, submission.user)
         %td= "#{time_ago_in_words(submission.created_at)} ago"

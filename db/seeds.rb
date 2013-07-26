@@ -12,10 +12,12 @@ Dir.glob(File.join(__dir__, 'submissions', '**', '*.md')) do |file|
   })
 
   content = File.read(file)
+  kind, title = File.basename(file, '.md').match(/^(\w) - (.*)$/)[1, 2]
 
   submission = Submission.create!({
     :user => user,
-    :title => File.basename(file, '.md'),
+    :kind => kind,
+    :title => title,
     :body => content
   })
 
