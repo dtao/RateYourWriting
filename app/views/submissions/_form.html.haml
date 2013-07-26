@@ -1,5 +1,5 @@
 = form_for(@submission) do |f|
-  = f.select :kind, [['Poem', 'P'], ['Short Story', 'S'], ['Book Excerpt', 'B']]
+  = f.select :kind, Submission::KINDS
   = f.text_field :title, :placeholder => 'Enter a title'
   = f.text_area :body, :class => 'editor', :placeholder => 'Write your content in Markdown format'
   = f.submit

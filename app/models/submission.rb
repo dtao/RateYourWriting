@@ -13,6 +13,12 @@ class Submission < ActiveRecord::Base
   # of every submission into memory by default.
   before_save :set_length
 
+  KINDS = [
+    ['Poem', 'P'],
+    ['Short Story', 'S'],
+    ['Book Excerpt', 'B']
+  ]
+
   def set_length
     if self.body_changed?
       self.length = self.body.length
