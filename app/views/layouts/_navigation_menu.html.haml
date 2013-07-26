@@ -1,9 +1,10 @@
 %ul
-  %li.header Sections
-  %li= link_to('Home', root_path)
-  %li= link_to('Latest Submissions', submissions_path)
-  %li= link_to('Latest Poems', submissions_path(:kind => 'P'))
-  %li= link_to('Latest Short Stories', submissions_path(:kind => 'S'))
+  %li= link_to('RateYourWriting', root_path)
+
+  %li.header Latest
+  %li= link_to('Submissions', submissions_path)
+  %li= link_to('Poems', submissions_path(:kind => 'P'))
+  %li= link_to('Short Stories', submissions_path(:kind => 'S'))
 
   %li.header Account
   - if logged_in?
