@@ -1,6 +1,14 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
+User.create!({
+  :name => 'Dan',
+  :email => 'daniel.tao@gmail.com',
+  :password => 'blah',
+  :password_confirmation => 'blah'
+})
+
+# Create a submission for every Markdown-formatted file in db/submissions/**
 Dir.glob(File.join(__dir__, 'submissions', '**', '*.md')) do |file|
   username = File.basename(File.dirname(file))
 
