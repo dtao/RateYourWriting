@@ -27,6 +27,17 @@ class SubmissionsController < ApplicationController
     redirect_to submission
   end
 
+  def edit
+    @submission = Submission.find(params[:id])
+  end
+
+  def update
+    submission = Submission.find(params[:id])
+    submission.update_attributes(submission_params)
+    alert "Updated submission '#{submission.title}'!", :success
+    redirect_to submission
+  end
+
   def vote
     submission = Submission.find(params[:id])
 
