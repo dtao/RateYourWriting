@@ -4,6 +4,14 @@ Jack's Story:
   title: Jack's Story
   body: This is Jack's story.
 
+Jack's Poem:
+  user: jack
+  kind: P
+  title: Jack's Poem
+  body: |
+    Roses are red
+    Violets are blue
+
 Jill's Story:
   user: jill
   kind: S

@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
   def vote_for(submission)
     submission.votes.find_by_user_id(self.id)
   end
+
+  def vote_added!(vote)
+    self.update_attributes(:average_rating => self.submissions.average(:rating))
+  end
 end

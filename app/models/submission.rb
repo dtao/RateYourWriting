@@ -9,7 +9,7 @@ class Submission < ActiveRecord::Base
 
   KIND_LOOKUP = KINDS.invert
 
-  belongs_to :user
+  belongs_to :user, :counter_cache => true
 
   has_many :votes
   has_many :comments

@@ -22,6 +22,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def require_admin
+    unless logged_in? && current_user.admin?
+      alert 'Only admins are allowed to access that section!', :warning
+      redirect_to root_path
+    end
+  end
+
   def current_user
     # Check a flag instead of @current_user directly since otherwise if the user is not logged in
     # we'll keep querying the DB every time this method is called.

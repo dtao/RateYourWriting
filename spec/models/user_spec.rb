@@ -38,6 +38,24 @@ describe User do
     lambda { User.create!(attributes) }.should raise_error
   end
 
+  it 'maintains a counter cache for submission count' do
+    jack = users(:jack)
+    lambda {
+      jack.submissions.create!({
+        :kind => 'B',
+        :title => "Jack's Book Chapter 1",
+        :body => 'The night was sultry...'
+      })
+      jack.reload
+    }.should change(jack, :submissions_count).by(1)
+  end
+
+  it 'maintains a cached average rating' do
+    users(:jill).vote!(submissions("Jack's Story"), 5)
+    users(:bill).vote!(submissions("Jack's Poem"), 7)
+    users(:jack).average_rating.should == 6
+  end
+
   describe '#vote_for' do
     it 'finds the vote a user placed for a submission' do
       jack = users(:jack)

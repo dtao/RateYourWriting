@@ -6,6 +6,10 @@
   %li= link_to('Poems', submissions_path(:kind => 'P'))
   %li= link_to('Short Stories', submissions_path(:kind => 'S'))
 
+  - if logged_in? && current_user.admin?
+    %li.header Admin
+    %li= link_to('Users', users_path)
+
   %li.header Account
   - if logged_in?
     %li= link_to('Preferences', preferences_path)

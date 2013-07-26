@@ -1,0 +1,18 @@
+%header
+  %h1 Users
+
+%table.users
+  %thead
+    %tr
+      %th Name
+      %th E-mail
+      %th Submissions
+      %th Average Rating
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to(user.name, user)
+        %td= mail_to(user.email)
+        %td= user.submissions.count
+        %td= number_with_precision(user.average_rating, :precision => 2)

@@ -63,10 +63,12 @@ ActiveRecord::Schema.define(version: 20130726194935) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "submissions_count",                         default: 0
+    t.decimal  "average_rating",    precision: 4, scale: 2, default: 0.0
     t.datetime "last_login"
-    t.boolean  "admin",           default: false
   end
 
   add_index "users", ["admin"], name: "index_users_on_admin"
