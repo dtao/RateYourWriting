@@ -1,6 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
+include ActionView::Helpers::DateHelper
+
 name = `git config --get user.name`.chomp
 email = `git config --get user.email`.chomp
 
@@ -18,6 +20,11 @@ admin = User.create!({
 
 seed_dir = File.join(__dir__, 'seed')
 
+def random_time_days_ago(days, origin=nil)
+  origin ||= Time.now
+  origin - rand(days - 1).days - rand(24).hours - rand(60).minutes - rand(60).seconds
+end
+
 # Create a news item for every Markdown-formatted file in db/seed/news_items
 Dir.glob(File.join(seed_dir, 'news_items', '*.md')) do |file|
   content = File.read(file)
@@ -27,10 +34,11 @@ Dir.glob(File.join(seed_dir, 'news_items', '*.md')) do |file|
     :user => admin,
     :kind => kind,
     :headline => headline,
-    :content => content
+    :content => content,
+    :created_at => random_time_days_ago(7)
   })
 
-  puts "Created '#{item.headline}'."
+  puts "#{admin.name} posted '#{item.headline}' #{time_ago_in_words(item.created_at)} ago."
 end
 
 # Create a submission for every Markdown-formatted file in db/seed/submissions/**
@@ -41,7 +49,8 @@ Dir.glob(File.join(seed_dir, 'submissions', '**', '*.md')) do |file|
     :name => username,
     :email => "#{username.underscore}@rateyourwriting.com",
     :password => 'passw0rd',
-    :password_confirmation => 'passw0rd'
+    :password_confirmation => 'passw0rd',
+    :created_at => random_time_days_ago(365, 14.days.ago)
   })
 
   content = File.read(file)
@@ -51,10 +60,11 @@ Dir.glob(File.join(seed_dir, 'submissions', '**', '*.md')) do |file|
     :user => user,
     :kind => kind,
     :title => title,
-    :body => content
+    :body => content,
+    :created_at => random_time_days_ago(14)
   })
 
-  puts "Created '#{submission.title}' by #{user.name}."
+  puts "#{user.name} wrote '#{submission.title}' #{time_ago_in_words(submission.created_at)} ago."
 end
 
 # For every submission we just created, have most other users cast a random vote
