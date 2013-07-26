@@ -10,6 +10,7 @@ class CreateSubmissions < ActiveRecord::Migration
       # Cached computations
       t.integer :length
       t.integer :votes_count, :default => 0
+      t.integer :comments_count, :default => 0
       t.decimal :rating, :precision => 4, :scale => 2, :default => 0
     end
 

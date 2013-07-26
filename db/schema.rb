@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 20130726063236) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "length"
-    t.integer  "votes_count",                         default: 0
-    t.decimal  "rating",      precision: 4, scale: 2, default: 0.0
+    t.integer  "votes_count",                            default: 0
+    t.integer  "comments_count",                         default: 0
+    t.decimal  "rating",         precision: 4, scale: 2, default: 0.0
   end
 
+  add_index "submissions", ["kind"], name: "index_submissions_on_kind"
   add_index "submissions", ["user_id"], name: "index_submissions_on_user_id"
 
   create_table "users", force: true do |t|

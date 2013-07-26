@@ -42,6 +42,14 @@ describe Submission do
     }.should change(jills_story, :votes_count).by(1)
   end
 
+  it 'maintains a counter cache for comment count' do
+    jills_story = submissions("Jill's Story")
+    lambda {
+      users(:jack).comment!(jills_story, 'Nice work!')
+      jills_story.reload
+    }.should change(jills_story, :comments_count).by(1)
+  end
+
   it 'maintains a cached average rating' do
     jills_story = submissions("Jill's Story")
     users(:jack).vote!(jills_story, 8)

@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
     submission.votes.create!(:user => self, :rating => rating)
   end
 
+  def comment!(submission, comment)
+    submission.comments.create!(:user => self, :content => comment)
+  end
+
   def vote_for(submission)
     submission.votes.find_by_user_id(self.id)
   end
