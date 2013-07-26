@@ -2,6 +2,7 @@ onReady = ->
   $('.editor').each ->
     CodeMirror.fromTextArea this,
       mode: 'markdown'
+      lineWrapping: true
 
   $('a[data-submit]').on 'click', ->
     link = $(this)
