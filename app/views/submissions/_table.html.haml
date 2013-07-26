@@ -1,25 +1,25 @@
 %table.submissions
   %thead
     %tr
-      %th
-      %th Title
+      %th.kind
+      %th.title Title
       - unless without.include?(:writer)
-        %th Writer
-      %th Submitted
-      %th Votes
-      %th Rating
-      %th Comments
+        %th.writer Writer
+      %th.submitted Submitted
+      %th.votes Votes
+      %th.rating Rating
+      %th.comments Comments
 
   %tbody
     - @submissions.each do |submission|
       %tr
-        %td= submission.kind
-        %td
+        %td.kind= submission.kind
+        %td.title
           = link_to(submission.title, submission)
           = "(#{submission.length})"
         - unless without.include?(:writer)
-          %td= link_to(submission.user.name, submission.user)
-        %td= "#{time_ago_in_words(submission.created_at)} ago"
-        %td= submission.votes_count
-        %td= number_with_precision(submission.rating, :precision => 2)
-        %td 0
+          %td.writer= link_to(submission.user.name, submission.user)
+        %td.submitted= "#{time_ago_in_words(submission.created_at)} ago"
+        %td.votes= submission.votes_count
+        %td.rating= number_with_precision(submission.rating, :precision => 2)
+        %td.comments 0

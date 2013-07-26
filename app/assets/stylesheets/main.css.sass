@@ -69,7 +69,7 @@ footer
   line-height: 40px
 
 table
-  @extend .table
+  @extend .table, .table-striped, .table-hover
 
 #notice
   @extend .alert
@@ -99,6 +99,10 @@ form
 
   input[type="submit"]
     @extend .btn, .btn-primary
+
+table.submissions
+  .title
+    text-align: right
 
 .author
   @extend .lead
