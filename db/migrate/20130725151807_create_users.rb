@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :name
       t.string  :email
       t.string  :password_digest
-      t.boolean :admin
+      t.boolean :admin, :default => false
       t.timestamps
 
       # Cached computations
