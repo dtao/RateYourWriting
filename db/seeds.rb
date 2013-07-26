@@ -1,15 +1,40 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-User.create!({
-  :name => 'Dan',
-  :email => 'daniel.tao@gmail.com',
-  :password => 'blah',
-  :password_confirmation => 'blah'
+name = `git config --get user.name`.chomp
+email = `git config --get user.email`.chomp
+
+print "Enter a password, #{name}: "; STDOUT.flush()
+password = STDIN.readline().chomp
+
+# Create an admin account for the current user.
+admin = User.create!({
+  :name => name,
+  :email => email,
+  :password => password,
+  :password_confirmation => password,
+  :admin => true
 })
 
-# Create a submission for every Markdown-formatted file in db/submissions/**
-Dir.glob(File.join(__dir__, 'submissions', '**', '*.md')) do |file|
+seed_dir = File.join(__dir__, 'seed')
+
+# Create a news item for every Markdown-formatted file in db/seed/news_items
+Dir.glob(File.join(seed_dir, 'news_items', '*.md')) do |file|
+  content = File.read(file)
+  kind, headline = File.basename(file, '.md').match(/^(\w) - (.*)$/)[1, 2]
+
+  item = NewsItem.create!({
+    :user => admin,
+    :kind => kind,
+    :headline => headline,
+    :content => content
+  })
+
+  puts "Created '#{item.headline}'."
+end
+
+# Create a submission for every Markdown-formatted file in db/seed/submissions/**
+Dir.glob(File.join(seed_dir, 'submissions', '**', '*.md')) do |file|
   username = File.basename(File.dirname(file))
 
   user = User.find_by_name(username) || User.create!({
