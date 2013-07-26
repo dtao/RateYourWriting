@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   def index
     options = {
+      :include => 'user',
       :order => 'id desc',
       :limit => 30
     }
