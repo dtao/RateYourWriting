@@ -5,6 +5,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.timestamps
+
+      # Cached computations
+      t.datetime :last_login
     end
 
     add_index :users, :email, :unique => true

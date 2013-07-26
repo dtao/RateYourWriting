@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   def login_user(user)
     session[:user_id] = user.id
+    user.update_attributes(:last_login => Time.now.utc)
     redirect_to root_path
   end
 
