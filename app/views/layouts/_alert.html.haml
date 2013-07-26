@@ -1,3 +1,10 @@
-#notice(class="#{type}")
-  %button.close(data-dismiss="alert") &times;
-  = message
+.modal(role='dialog')
+  .modal-header
+    %button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
+    %h3= type.to_s.humanize
+
+  .modal-body
+    %p=h message
+
+  .modal-footer
+    %button.btn(data-dismiss='modal') OK
