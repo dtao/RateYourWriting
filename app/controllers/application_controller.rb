@@ -49,10 +49,23 @@ class ApplicationController < ActionController::Base
   end
 
   def set_theme
-    if params.include?(:theme) && UserPreferences::THEMES.include?(params[:theme])
+    possible_themes = UserPreferences::THEMES
+
+    # 1. Always allow a query flag to force a given theme
+    # 2. If the user is logged in, use his/her preferred theme
+    # 3. Otherwise, see if any theme has been stored in the current session (i.e., if the user
+    #    logged out, continue to use the theme he/she was using)
+    # 4. Lastly, fall back to the default
+
+    if params.include?(:theme) && possible_themes.include?(params[:theme])
       @theme = params[:theme]
+
     elsif logged_in? && current_user.preferences
       @theme = current_user.preferences.theme
+
+    elsif session[:theme] && possible_themes.include?(session[:theme])
+      @theme = session[:theme]
+
     else
       @theme = UserPreferences::DEFAULT_THEME
     end

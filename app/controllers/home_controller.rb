@@ -40,6 +40,7 @@ class HomeController < ApplicationController
 
     if request.post? || request.patch?
       @preferences.update_attributes(preferences_params)
+      session[:theme] = params[:preferences][:theme]
       alert 'Updated preferences!', :success
       redirect_to root_path
     end
