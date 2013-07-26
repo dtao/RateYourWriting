@@ -21,7 +21,8 @@ onReady = ->
 
   $('button[data-reveal]').on 'click', ->
     target = $(this).data('reveal')
-    $(target).slideDown()
+    $(target).slideDown ->
+      $('textarea', this).focus()
     return false
 
   $('button[data-dismiss-closest]').on 'click', ->
