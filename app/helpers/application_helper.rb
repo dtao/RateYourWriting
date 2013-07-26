@@ -22,7 +22,7 @@ module ApplicationHelper
   def highlight(content, options=nil)
     options ||= {}
 
-    if ([nil, true].include?(options[:if]))
+    if (!options.include?(:if) || options[:if])
       return %Q[<span class="highlight">#{html_escape(content)}</span>]
     end
 

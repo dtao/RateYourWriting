@@ -39,7 +39,8 @@ class ApplicationController < ActionController::Base
 
   def is_new_for_user?(time, user=nil)
     user ||= current_user
-    time.present? && logged_in? && time > current_user.last_login - 5.minutes
+    time.present? && logged_in? && current_user.last_login &&
+      time > (current_user.last_login - 5.minutes)
   end
 
   def handle_exception(exception)
