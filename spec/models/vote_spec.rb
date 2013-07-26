@@ -33,4 +33,8 @@ describe Vote do
     users(:jack).vote!(submissions("Jill's Story"), 8)
     lambda { users(:jack).vote!(submissions("Jill's Story"), 8) }.should raise_error
   end
+
+  it 'prevents a user from voting for his/her own submission' do
+    lambda { users(:jack).vote!(submissions("Jack's Story"), 10) }.should raise_error
+  end
 end
