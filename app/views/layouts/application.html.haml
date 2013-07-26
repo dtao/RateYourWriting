@@ -16,6 +16,6 @@
 
       = yield
 
-    - if logged_in?
-      %footer
-        = "Logged in as #{current_user.name}"
+    %footer
+      = "Logged in as #{current_user.name}" if logged_in?
+      = query_diet_widget if Rails.env.development?
