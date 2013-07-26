@@ -35,7 +35,16 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_exception(exception)
-    alert exception.message, :error
-    redirect_to request.referrer || root_path
+    session[:exceptions] ||= 0
+    session[:exceptions] += 1
+
+    if session[:exceptions] < 2
+      alert exception.message, :error
+      redirect_to request.referrer || root_path
+
+    else
+      session[:exceptions] = 0
+      redirect_to '/500.html'
+    end
   end
 end
