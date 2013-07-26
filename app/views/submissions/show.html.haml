@@ -6,7 +6,7 @@
   .author= link_to(@submission.user.name, @submission.user)
 
 %article.submission
-  != preserve(submission_body(@submission))
+  != preserve(to_markdown(@submission.body))
 
 = voting_section
 
