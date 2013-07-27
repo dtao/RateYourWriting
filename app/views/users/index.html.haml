@@ -14,5 +14,5 @@
       %tr
         %td= link_to(user.name, user)
         %td= mail_to(user.email)
-        %td= user.submissions.count
+        %td= user.submissions_count
         %td= number_with_precision(user.average_rating, :precision => 2)
