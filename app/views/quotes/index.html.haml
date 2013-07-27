@@ -1,0 +1,16 @@
+%header
+  %h1 Quotes
+
+%table.quotes
+  %thead
+    %tr
+      %th.content Quote
+      %th.source Source
+      %th.user Posted By
+
+  %tbody
+    - @quotes.each do |quote|
+      %tr.quote
+        %td.content= quote.content
+        %td.source= quote.source
+        %td.user= quote.user.name

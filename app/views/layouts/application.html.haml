@@ -18,5 +18,5 @@
       = yield
 
     %footer
-      = "Logged in as #{current_user.name}" if logged_in?
+      = random_quote
       = query_diet_widget if Rails.env.development?

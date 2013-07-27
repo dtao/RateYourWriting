@@ -11,4 +11,5 @@
  *= require_self
  *= require codemirror
  *= require news_items
+ *= require quotes
  */

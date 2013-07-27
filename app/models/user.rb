@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :submissions
   has_many :votes
   has_many :comments
+  has_many :quotes
 
   validates_presence_of :name
   validates_presence_of :email

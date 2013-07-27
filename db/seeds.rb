@@ -1,6 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
+require 'yaml'
+
 include ActionView::Helpers::DateHelper
 
 name = `git config --get user.name`.chomp
@@ -23,6 +25,14 @@ seed_dir = File.join(__dir__, 'seed')
 def random_time_days_ago(days, origin=nil)
   origin ||= Time.now
   origin - rand(days - 1).days - rand(24).hours - rand(60).minutes - rand(60).seconds
+end
+
+# Populate the quotes table from quotes.yml
+YAML.load_file(File.join(seed_dir, 'quotes.yml')).each do |quote_data|
+  admin.quotes.create!({
+    :content => quote_data['content'],
+    :source => quote_data['source']
+  })
 end
 
 # Create a news item for every Markdown-formatted file in db/seed/news_items
