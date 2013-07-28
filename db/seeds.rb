@@ -29,11 +29,14 @@ def random_time_days_ago(days, origin=nil)
 end
 
 # Populate the quotes table from quotes.yml
-YAML.load_file(File.join(seed_dir, 'quotes.yml')).each do |quote_data|
-  admin.quotes.create!({
-    :content => quote_data['content'],
-    :source => quote_data['source']
-  })
+quotes_file = File.join(seed_dir, 'quotes.yml')
+if File.exist?(quotes_file)
+  YAML.load_file(quotes_file).each do |quote_data|
+    admin.quotes.create!({
+      :content => quote_data['content'],
+      :source => quote_data['source']
+    })
+  end
 end
 
 # Create a news item for every Markdown-formatted file in db/seed/news_items
