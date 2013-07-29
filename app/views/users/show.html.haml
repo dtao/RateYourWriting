@@ -1,4 +1,6 @@
+- content_for(:title) { @user.name }
+
 %header
-  %h1=h @user.name
+  %h1= @user.name
 
 = submissions_table(:without => [:writer])

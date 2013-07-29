@@ -1,6 +1,8 @@
+- content_for(:title) { "#{@submission.title} by #{@submission.user.name}" }
+
 %header
   %h1
-    =h @submission.title
+    = @submission.title
     - if @submission.user == current_user
       = link_to('Edit', edit_submission_path(@submission))
   .author= link_to(@submission.user.name, @submission.user)

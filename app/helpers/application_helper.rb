@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def page_title
+    [*content_for(:title), 'Rate Your Writing'].join(' - ')
+  end
+
   def navigation_menu
     render(:partial => 'layouts/navigation_menu')
   end
