@@ -7,6 +7,7 @@ class SubmissionsController < ApplicationController
     }
 
     options[:conditions] = { :kind => params[:kind] } if params.include?(:kind)
+    options[:order] = 'rating desc' if params[:sort] == 'rating'
 
     @submissions = Submission.all(options)
   end

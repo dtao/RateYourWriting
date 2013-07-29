@@ -1,10 +1,9 @@
 %ul
   %li= link_to('RateYourWriting', root_path)
 
-  %li.header Latest
-  %li= link_to('Submissions', submissions_path)
-  %li= link_to('Poems', submissions_path(:kind => 'P'))
-  %li= link_to('Short Stories', submissions_path(:kind => 'S'))
+  %li.header Submissions
+  %li= link_to('Most recent', submissions_path)
+  %li= link_to('Highest rated', submissions_path(:sort => 'rating'))
 
   - if logged_in? && current_user.admin?
     %li.header Admin
