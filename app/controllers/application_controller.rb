@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_theme
 
-  rescue_from ActiveRecord::RecordInvalid, :with => :handle_exception
+  rescue_from ActiveRecord::ActiveRecordError, :with => :handle_exception
 
   helper_method :current_user, :logged_in?, :is_new_for_user?
 
