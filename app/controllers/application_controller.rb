@@ -25,7 +25,8 @@ class ApplicationController < ActionController::Base
       alert 'You must verify your e-mail address.', :error
     end
 
-    redirect_to root_path
+    # No need to serve every page henceforth over HTTPS!
+    redirect_to root_url(:protocol => 'http')
   end
 
   def require_admin
