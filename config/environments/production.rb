@@ -29,6 +29,8 @@ RateYourWriting::Application.configure do
     :enable_starttls_auto => true
   }
 
+  config.action_mailer.default_url_options = { :host => 'ryw.herokuapp.com' }
+
   # xxx Disable Rails's static asset server (Apache or nginx will already do this).
   # TODO: Fix this! (see https://devcenter.heroku.com/articles/rails-integration-gems#serve-static-assets)
   config.serve_static_assets = true
