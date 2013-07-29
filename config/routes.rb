@@ -7,9 +7,9 @@ RateYourWriting::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  match 'login' => 'home#login', :via => [:get, :post]
+  match 'login' => 'home#login', :via => [:get, :post], :constraints => { :protocol => 'https' } 
   match 'preferences' => 'home#preferences', :via => [:get, :post, :patch]
-  get 'register' => 'home#register'
+  get 'register' => 'home#register', :constraints => { :protocol => 'https' }
   get 'logout' => 'home#logout'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
