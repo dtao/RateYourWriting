@@ -7,6 +7,6 @@
 
   %footer
     Posted by
-    = item.user.name
+    = link_to(item.user.name, item.user)
     = time_ago_in_words(item.created_at)
     ago
