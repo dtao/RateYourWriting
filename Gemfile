@@ -42,6 +42,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :development do
+  gem 'mustache'
   gem 'query_diet'
 end
 

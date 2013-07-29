@@ -103,8 +103,10 @@ table
     button
       @extend .btn
 
-.quote
-  margin-top: 10px
+#quote
+  padding-top: 10px
+  margin-top: 40px
+  border-top: 1px solid $hrBorder
   text-align: center
 
 aside.notes
@@ -277,3 +279,30 @@ button.leave-comment
     font-size: 64px
     text-align: center
     z-index: 2
+
+.news-item
+  position: relative
+  margin: 10px 0
+
+  header h1
+    font-size: 125%
+
+  .content
+    padding-bottom: 30px
+
+  footer
+    @include backdrop(#888, 0.3)
+
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    height: 30px
+    line-height: 30px
+
+table.quotes
+  .content
+    width: 50%
+
+  .source, .user
+    width: 25%
