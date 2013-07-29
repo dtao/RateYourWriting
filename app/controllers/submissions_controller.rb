@@ -42,13 +42,22 @@ class SubmissionsController < ApplicationController
   def vote
     submission = Submission.find(params[:id])
 
-    vote = Vote.create!({
-      :user => current_user,
-      :submission => submission,
-      :rating => params[:rating]
-    })
+    if (vote = current_user.vote_for(submission))
+      if vote.rating.to_s != params[:rating].to_s
+        vote.update_attributes(:rating => params[:rating])
+        alert "Changed vote for '#{submission.title}' to #{params[:rating]}.", :success
+      end
 
-    alert "Rated '#{submission.title}' a #{params[:rating]}.", :success
+    else
+      vote = Vote.create!({
+        :user => current_user,
+        :submission => submission,
+        :rating => params[:rating]
+      })
+
+      alert "Rated '#{submission.title}' a #{params[:rating]}.", :success
+    end
+
     redirect_to submission
   end
 
