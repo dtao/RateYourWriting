@@ -31,17 +31,15 @@ RateYourWriting::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'ryw.herokuapp.com' }
 
-  # xxx Disable Rails's static asset server (Apache or nginx will already do this).
-  # TODO: Fix this! (see https://devcenter.heroku.com/articles/rails-integration-gems#serve-static-assets)
-  config.serve_static_assets = true
+  # Disable Rails's static asset server (Apache or nginx will already do this).
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
-  # xxx Do not fallback to assets pipeline if a precompiled asset is missed.
-  # TODO: Fix this! (see http://stackoverflow.com/questions/16271696/cant-get-css-working-on-heroku-using-rails-4-with-bootstrap-saas-gem)
-  config.assets.compile = true
+  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = false
 
   # Generate digests for assets URLs.
   config.assets.digest = true
