@@ -1,3 +1,4 @@
-#quote
+%blockquote#quote
   = @quote.content
-  = "- #{@quote.source}" unless @quote.source.empty?
+  - if @quote.source
+    %footer= @quote.source

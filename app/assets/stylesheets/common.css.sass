@@ -103,11 +103,20 @@ table
     button
       @extend .btn
 
-#quote
+blockquote#quote
+  @extend .muted
+
+  width: 75%
   padding-top: 10px
-  margin-top: 40px
+  margin: 40px auto
   border-top: 1px solid $hrBorder
-  text-align: center
+  border-left: none
+
+  footer
+    display: inline
+
+    &:before
+      content: "-"
 
 aside.notes
   &:before
