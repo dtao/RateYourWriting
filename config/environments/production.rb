@@ -29,7 +29,7 @@ RateYourWriting::Application.configure do
     :enable_starttls_auto => true
   }
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
+  # xxx Disable Rails's static asset server (Apache or nginx will already do this).
   # TODO: Fix this! (see https://devcenter.heroku.com/articles/rails-integration-gems#serve-static-assets)
   config.serve_static_assets = true
 
@@ -37,8 +37,9 @@ RateYourWriting::Application.configure do
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  # xxx Do not fallback to assets pipeline if a precompiled asset is missed.
+  # TODO: Fix this! (see http://stackoverflow.com/questions/16271696/cant-get-css-working-on-heroku-using-rails-4-with-bootstrap-saas-gem)
+  config.assets.compile = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
