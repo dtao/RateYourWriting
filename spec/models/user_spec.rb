@@ -18,13 +18,6 @@ describe User do
     lambda { User.create!(attributes.merge(:name => '')) }.should raise_error
   end
 
-  it 'does not require name to be unique' do
-    lambda {
-      User.create!(attributes)
-      User.create!(attributes.merge(:email => 'daniel.tao@yahoo.com'))
-    }.should change(User, :count).by(2)
-  end
-
   it 'requires an e-mail address' do
     lambda { User.create!(attributes.except(:email)) }.should raise_error
   end
@@ -33,9 +26,14 @@ describe User do
     lambda { User.create!(attributes.merge(:email => '')) }.should raise_error
   end
 
+  it 'requires name to be unique' do
+    User.create!(attributes)
+    lambda { User.create!(attributes.merge(:email => 'adam.tao@gmail.com')) }.should raise_error
+  end
+
   it 'requires e-mail address to be unique' do
     User.create!(attributes)
-    lambda { User.create!(attributes) }.should raise_error
+    lambda { User.create!(attributes.merge(:name => 'Adam')) }.should raise_error
   end
 
   it 'maintains a counter cache for submission count' do
