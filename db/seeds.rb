@@ -17,7 +17,8 @@ admin = User.create!({
   :email => email,
   :password => password,
   :password_confirmation => password,
-  :admin => true
+  :admin => true,
+  :email_verified => true
 })
 
 seed_dir = File.join(__dir__, 'seed')
@@ -60,7 +61,8 @@ Dir.glob(File.join(seed_dir, 'submissions', '**', '*.md')) do |file|
     :email => "#{username.underscore}@rateyourwriting.com",
     :password => 'passw0rd',
     :password_confirmation => 'passw0rd',
-    :created_at => random_time_days_ago(365, 14.days.ago)
+    :created_at => random_time_days_ago(365, 14.days.ago),
+    :email_verified => true
   })
 
   content = File.read(file)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726235339) do
+ActiveRecord::Schema.define(version: 20130727012331) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20130726235339) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["submission_id"], name: "index_comments_on_submission_id"
+  add_index "comments", ["submission_id"], name: "index_comments_on_submission_id", using: :btree
 
   create_table "news_items", force: true do |t|
     t.integer  "user_id"
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20130726235339) do
     t.datetime "last_comment"
   end
 
-  add_index "submissions", ["kind"], name: "index_submissions_on_kind"
-  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id"
+  add_index "submissions", ["kind"], name: "index_submissions_on_kind", using: :btree
+  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
 
   create_table "user_preferences", force: true do |t|
     t.integer  "user_id"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20130726235339) do
     t.datetime "updated_at"
   end
 
-  add_index "user_preferences", ["user_id"], name: "index_user_preferences_on_user_id"
+  add_index "user_preferences", ["user_id"], name: "index_user_preferences_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -77,10 +77,16 @@ ActiveRecord::Schema.define(version: 20130726235339) do
     t.integer  "submissions_count",                         default: 0
     t.decimal  "average_rating",    precision: 4, scale: 2, default: 0.0
     t.datetime "last_login"
+    t.boolean  "email_verified",                            default: false
   end
 
-  add_index "users", ["admin"], name: "index_users_on_admin"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["admin"], name: "index_users_on_admin", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "verification_tokens", force: true do |t|
+    t.integer "user_id"
+    t.string  "token"
+  end
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
@@ -90,6 +96,6 @@ ActiveRecord::Schema.define(version: 20130726235339) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["submission_id"], name: "index_votes_on_submission_id"
+  add_index "votes", ["submission_id"], name: "index_votes_on_submission_id", using: :btree
 
 end

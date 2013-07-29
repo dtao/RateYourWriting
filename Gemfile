@@ -41,6 +41,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Use Randy to generate random tokens for e-mail verification
+gem 'randy'
+
 group :development do
   gem 'mustache'
   gem 'query_diet'

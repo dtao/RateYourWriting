@@ -12,6 +12,18 @@ class UsersController < ApplicationController
 
   def create
     user = User.create!(user_params)
+    UserMailer.email_verification(user).deliver
+    alert "Check your e-mail, #{user.name}!", :success
+    redirect_to root_path
+  end
+
+  def verify
+    user = User.find(params[:id])
+    token = VerificationToken.find_by_token(params[:token])
+    if token.user_id == user.id
+      user.update_attributes(:email_verified => true)
+    end
+
     alert "Welcome to RateYourWriting, #{user.name}!", :success
     return login_user(user)
   end

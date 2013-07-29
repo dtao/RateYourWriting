@@ -17,8 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   def login_user(user)
-    session[:user_id] = user.id
-    user.update_attributes(:last_login => Time.now.utc)
+    if user.email_verified?
+      session[:user_id] = user.id
+      user.update_attributes(:last_login => Time.now.utc)
+
+    else
+      alert 'You must verify your e-mail address.', :error
+    end
+
     redirect_to root_path
   end
 
@@ -41,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!current_user
+    current_user && current_user.email_verified?
   end
 
   def is_new_for_user?(time, user=nil)

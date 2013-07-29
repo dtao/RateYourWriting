@@ -1,0 +1,7 @@
+Welcome to RateYourWriting!
+===========================
+
+In order to get started, you need to verify your e-mail address. To do that, click on the link below
+or copy and paste the URL into your browser's address bar.
+
+<%= verification_url(@user, :token => @user.verification_token.token) %>
