@@ -1,6 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: ryw_development
   username: ryw
   password: passw0rd
@@ -8,6 +9,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: ryw_test
   username: ryw
   password: passw0rd
@@ -15,6 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: ryw_production
   username: ryw
   password: passw0rd
