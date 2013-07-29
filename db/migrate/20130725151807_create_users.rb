@@ -11,6 +11,9 @@ class CreateUsers < ActiveRecord::Migration
       t.integer  :submissions_count, :default => 0
       t.decimal  :average_rating, :default => 0, :precision => 4, :scale => 2
       t.datetime :last_login
+
+      # One-time verification
+      t.boolean :email_verified, :default => false
     end
 
     add_index :users, :email, :unique => true
