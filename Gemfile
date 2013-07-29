@@ -8,6 +8,9 @@ gem 'rails', '4.0.0.rc2'
 # Use Postgres as the database for Active Record
 gem 'pg'
 
+# Use Foreman for configuration
+gem 'foreman'
+
 # Use HAML for markup
 gem 'haml-rails'
 
@@ -61,5 +64,5 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the app server
-gem 'unicorn'
+# Use thin as the app server
+gem 'thin'
