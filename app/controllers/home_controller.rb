@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  force_ssl :if => lambda { Rails.env.production? }, :only => [:login, :register]
+
   def index
     @daily_news = NewsItem.daily.latest
     @site_news = NewsItem.site.latest
