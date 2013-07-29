@@ -1,5 +1,7 @@
 %ul
-  %li= link_to('RateYourWriting', root_path)
+  %li.header RateYourWriting
+  %li= link_to('Home', root_path)
+  %li= link_to('About', about_path)
 
   %li.header Submissions
   %li= link_to('Most recent', submissions_path)
@@ -18,6 +20,3 @@
   - else
     %li= link_to('Log in', login_path)
     %li= link_to('Register', register_path)
-
-  %li.header Information
-  %li= link_to('About', about_path)
