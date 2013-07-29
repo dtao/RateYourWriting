@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :set_theme
+  before_filter :set_theme, :set_unread_message_count
 
   rescue_from ActiveRecord::ActiveRecordError, :with => :handle_exception
 
@@ -84,6 +84,14 @@ class ApplicationController < ActionController::Base
 
     else
       @theme = UserPreferences::DEFAULT_THEME
+    end
+  end
+
+  def set_unread_message_count
+    if logged_in?
+      @unread_message_count = current_user.messages.where(['created_at > ?', current_user.previous_login]).count
+    else
+      @unread_message_count = 0
     end
   end
 end

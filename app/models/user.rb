@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :submissions
   has_many :votes
   has_many :comments
+  has_many :messages, :foreign_key => :recipient_id
+  has_many :sent_messages, :class_name => 'Message', :foreign_key => :sender_id
   has_many :quotes
 
   validates_presence_of :name

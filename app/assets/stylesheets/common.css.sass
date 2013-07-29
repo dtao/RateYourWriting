@@ -72,6 +72,9 @@ nav
     li a
       text-shadow: none
 
+      span.unread-count
+        @extend .badge, .badge-info
+
 header
   p
     @extend .lead
@@ -256,6 +259,9 @@ button.leave-comment
 
   &:nth-of-type(even)
     background-color: #e5e5e5
+
+.messages-navigation
+  @extend .nav, .nav-tabs
 
 #theme-preview
   position: relative

@@ -1,6 +1,9 @@
 - content_for(:title) { @user.name }
 
 %header
-  %h1= @user.name
+  %h1
+    = @user.name
+    - if logged_in? && @user != current_user
+      = link_to('Send a message', send_message_path(@user))
 
 = submissions_table(:without => [:writer])

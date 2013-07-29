@@ -1,0 +1,6 @@
+%header
+  %h1= "Message from #{@message.sender.name}"
+
+%h3= @message.subject
+
+!= to_markdown(@message.body)

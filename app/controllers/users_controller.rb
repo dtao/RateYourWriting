@@ -28,6 +28,11 @@ class UsersController < ApplicationController
     return login_user(user)
   end
 
+  def message
+    @user = User.find(params[:id])
+    @message = Message.new(:recipient => @user)
+  end
+
   private
 
   def user_params
