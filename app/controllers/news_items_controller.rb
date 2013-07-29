@@ -9,6 +9,17 @@ class NewsItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @news_item = NewsItem.find(params[:id])
+  end
+
+  def update
+    news_item = NewsItem.find(params[:id])
+    news_item.update_attributes(news_item_params)
+    alert "Updated '#{news_item.headline}'!", :success
+    redirect_to root_path
+  end
+
   private
 
   def news_item_params
