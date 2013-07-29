@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/dtao/query_diet.git
+  revision: f335cd8fd9b4db145ecb906bb730ba730ea3aadc
+  specs:
+    query_diet (0.5.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -76,7 +82,6 @@ GEM
     mustache (0.99.4)
     pg (0.16.0)
     polyglot (0.3.3)
-    query_diet (0.5.1)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -163,7 +168,7 @@ DEPENDENCIES
   jquery-rails
   mustache
   pg
-  query_diet
+  query_diet!
   rails (= 4.0.0.rc2)
   rails_12factor
   randy

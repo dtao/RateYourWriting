@@ -53,7 +53,7 @@ end
 
 group :development do
   gem 'mustache'
-  gem 'query_diet'
+  gem 'query_diet', :github => 'dtao/query_diet'
 end
 
 group :test do
