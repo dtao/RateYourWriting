@@ -14,3 +14,5 @@
         %td.content= quote.content
         %td.source= quote.source
         %td.user= quote.user.name
+
+%p= link_to('New quote', new_quote_path, :class => 'new-quote')

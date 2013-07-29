@@ -1,0 +1,7 @@
+%header
+  %h1 New quote
+
+= form_for(@quote) do |f|
+  = f.text_area :content, :placeholder => 'Enter the quote here'
+  = f.text_field :source, :placeholder => 'Who said it? (optional)'
+  = f.submit
