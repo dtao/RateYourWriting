@@ -47,6 +47,10 @@ gem 'jbuilder', '~> 1.2'
 # Use Randy to generate random tokens for e-mail verification
 gem 'randy'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'mustache'
   gem 'query_diet'
