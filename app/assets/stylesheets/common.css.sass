@@ -136,10 +136,16 @@ aside.kinds
   #site-news
     @include span(6)
 
-a.new-story
+a[class*="new-"]
   @extend .btn, .btn-inverse
 
-form
+form[class*="new_"],
+form[class*="edit_"]
+  input[type="text"],
+  input[type="password"],
+  textarea
+    @extend .input-block-level
+
   input[type="submit"], button
     @extend .btn
 
@@ -218,12 +224,6 @@ form.new-comment
 
 button.leave-comment
   @extend .btn-mini
-
-#submission_title,
-#submission_body,
-#news_item_headline,
-#news_item_content
-  @extend .input-block-level
 
 #comment
   @include span(6)
