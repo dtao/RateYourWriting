@@ -11,6 +11,7 @@ RateYourWriting::Application.routes.draw do
   match 'preferences' => 'home#preferences', :via => [:get, :post, :patch]
   get 'register' => 'home#register'
   get 'logout' => 'home#logout'
+  get 'about' => 'home#about'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

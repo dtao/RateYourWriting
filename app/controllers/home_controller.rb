@@ -34,6 +34,9 @@ class HomeController < ApplicationController
     redirect_to root_path
   end
 
+  def about
+  end
+
   def preferences
     @preferences = current_user.preferences || UserPreferences.create!({
       :user => current_user,
