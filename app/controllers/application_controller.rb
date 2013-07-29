@@ -19,7 +19,10 @@ class ApplicationController < ActionController::Base
   def login_user(user)
     if user.email_verified?
       session[:user_id] = user.id
-      user.update_attributes(:last_login => Time.now.utc)
+      user.update_attributes({
+        :previous_login => user.last_login,
+        :last_login => Time.now.utc
+      })
 
     else
       alert 'You must verify your e-mail address.', :error
@@ -51,10 +54,9 @@ class ApplicationController < ActionController::Base
     current_user && current_user.email_verified?
   end
 
-  def is_new_for_user?(time, user=nil)
-    user ||= current_user
-    time.present? && logged_in? && current_user.last_login &&
-      time > (current_user.last_login - 5.minutes)
+  def is_new_for_user?(time)
+    time.present? && logged_in? && current_user.previous_login.present? &&
+      time > current_user.previous_login
   end
 
   def handle_exception(exception)

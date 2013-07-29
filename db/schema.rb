@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130729175615) do
+ActiveRecord::Schema.define(version: 20130729185038) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20130729175615) do
     t.decimal  "average_rating",    precision: 4, scale: 2, default: 0.0
     t.datetime "last_login"
     t.boolean  "email_verified",                            default: false
+    t.datetime "previous_login"
   end
 
   add_index "users", ["admin"], name: "index_users_on_admin", using: :btree
