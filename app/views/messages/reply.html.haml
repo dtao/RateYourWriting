@@ -1,0 +1,8 @@
+%header
+  %h1= "Reply to #{@source.sender.name}"
+
+%h3= @source.subject
+
+!= to_markdown(@source.body)
+
+= render(:partial => 'form')

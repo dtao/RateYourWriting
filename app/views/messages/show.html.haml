@@ -4,3 +4,6 @@
 %h3= @message.subject
 
 != to_markdown(@message.body)
+
+- if @message.recipient == current_user
+  %p= link_to('Reply', reply_path(@message), :class => 'reply')

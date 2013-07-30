@@ -20,6 +20,7 @@ RateYourWriting::Application.routes.draw do
   post 'submissions/:id/comment' => 'submissions#comment', :as => :comment
   get 'users/:id/verify' => 'users#verify', :as => :verification
   get 'users/:id/message' => 'users#message', :as => :send_message
+  get 'messages/:id/reply' => 'messages#reply', :as => :reply
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

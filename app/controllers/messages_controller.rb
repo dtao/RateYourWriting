@@ -8,6 +8,15 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
   end
 
+  def reply
+    @source = Message.find(params[:id])
+
+    @message = Message.new({
+      :recipient => @source.sender,
+      :source => @source
+    })
+  end
+
   def create
     message = Message.create!(message_params)
     alert "Sent message to #{message.recipient.name}.", :success
@@ -17,6 +26,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:recipient_id, :subject, :body).merge(:sender => current_user)
+    params.require(:message).permit(:recipient_id, :source_id, :subject, :body).merge(:sender => current_user)
   end
 end

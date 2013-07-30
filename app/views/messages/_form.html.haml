@@ -1,0 +1,6 @@
+= form_for(@message) do |f|
+  = f.hidden_field :recipient_id
+  = f.hidden_field :source_id
+  .field= f.text_field :subject, :placeholder => 'Enter a subject'
+  .field= f.text_area :body, :placeholder => 'Enter message in Markdown format'
+  = f.submit 'Send message'
