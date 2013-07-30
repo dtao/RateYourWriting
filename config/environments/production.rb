@@ -1,3 +1,5 @@
+require 'env'
+
 RateYourWriting::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -22,14 +24,14 @@ RateYourWriting::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_USER_NAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'ryw.herokuapp.com',
+    :domain => 'rateyourwriting.net',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { :host => 'ryw.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => Env::HTTP_HOST }
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
@@ -89,4 +91,7 @@ RateYourWriting::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Use rateyourwriting.net by default for URLs.
+  config.routes.default_url_options = { :host => Env::HTTP_HOST }
 end

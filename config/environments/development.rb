@@ -1,3 +1,5 @@
+require 'env'
+
 RateYourWriting::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -18,7 +20,7 @@ RateYourWriting::Application.configure do
 
   # For development, save e-mails to disk rather than actually sending them.
   config.action_mailer.delivery_method = :file
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => Env::HTTP_HOST }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

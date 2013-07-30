@@ -1,27 +1,27 @@
 %ul
   %li.header RateYourWriting
-  %li= link_to('Home', root_path)
-  %li= link_to('About', about_path)
+  %li= link_to('Home', root_url)
+  %li= link_to('About', about_url)
 
   %li.header Submissions
-  %li= link_to('Most recent', submissions_path)
-  %li= link_to('Highest rated', submissions_path(:sort => 'rating'))
+  %li= link_to('Most recent', submissions_url)
+  %li= link_to('Highest rated', submissions_url(:sort => 'rating'))
 
   - if logged_in? && current_user.admin?
     %li.header Admin
-    %li= link_to('Users', users_path)
-    %li= link_to('Quotes', quotes_path)
+    %li= link_to('Users', users_url)
+    %li= link_to('Quotes', quotes_url)
 
   %li.header Account
   - if logged_in?
-    %li= link_to('New submission', new_submission_path)
+    %li= link_to('New submission', new_submission_url)
     %li
-      %a(href="#{messages_path}")
+      %a(href="#{messages_url}")
         Messages
         - if @unread_message_count > 0
           %span.unread-count= @unread_message_count
-    %li= link_to('Preferences', preferences_path)
-    %li= link_to('Log out', logout_path, { :'data-confirm' => 'Are you sure you want to log out? '})
+    %li= link_to('Preferences', preferences_url)
+    %li= link_to('Log out', logout_url, { :'data-confirm' => 'Are you sure you want to log out? '})
   - else
     %li= link_to('Log in', login_url_for_env)
     %li= link_to('Register', register_url_for_env)
