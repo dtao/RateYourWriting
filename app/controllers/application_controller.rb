@@ -3,17 +3,25 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :set_theme, :set_unread_message_count
+  before_filter :set_theme, :set_unread_message_count, :set_message
 
   rescue_from ActiveRecord::ActiveRecordError, :with => :handle_exception
 
   helper_method :current_user, :logged_in?, :is_new_for_user?
 
   def alert(message, type=:info)
-    flash[:notice] = {
-      :message => message,
-      :type => type
-    }
+    if request.env['HTTP_HOST'] == Env::HTTP_HOST
+      flash[:notice] = {
+        :message => message,
+        :type => type
+      }
+
+    else
+      @notice = SingleUseNotice.create!({
+        :user => current_user,
+        :message => message
+      })
+    end
   end
 
   def login_user(user)
@@ -96,6 +104,24 @@ class ApplicationController < ActionController::Base
       @unread_message_count = current_user.messages.where(['created_at > ?', current_user.previous_login]).count
     else
       @unread_message_count = 0
+    end
+  end
+
+  def set_message
+    if params.include?(:notice)
+      notice = SingleUseNotice.find_by_token(params[:notice])
+      if notice
+        message, type = notice.use_and_destroy!
+        alert message, *type
+      end
+    end
+  end
+
+  def default_url_options
+    if @notice.nil?
+      {}
+    else
+      { :notice => @notice.token }
     end
   end
 end
