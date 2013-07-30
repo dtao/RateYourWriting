@@ -84,7 +84,7 @@ main > header
     @extend .lead
 
   h1 a
-    @extend .btn, .btn-small, .btn-info
+    @extend .btn, .btn-small, .btn-default
 
 footer
   padding: 0 1em
@@ -256,10 +256,13 @@ form.new-comment
   margin-top: 10px
 
 button.leave-comment
-  @extend .btn-default, .btn-mini
+  @extend .btn-info, .btn-mini
+
+.comments
+  margin-top: 20px
 
 .comment
-  padding: 4px 6px
+  @extend .well
 
   .commenter
     font-weight: bold
@@ -270,8 +273,8 @@ button.leave-comment
   &:nth-of-type(n+2)
     margin-top: 10px
 
-  &:nth-of-type(even)
-    background-color: #e5e5e5
+  p:last-child
+    margin-bottom: 0
 
 .messages
   .message.new
