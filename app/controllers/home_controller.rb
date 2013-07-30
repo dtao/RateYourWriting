@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   force_ssl :if => lambda { Rails.env.production? }, :only => [:login, :register]
 
   def index
-    @daily_news = NewsItem.daily.latest
-    @site_news = NewsItem.site.latest
+    @daily_news = NewsItem.daily.latest.all(:include => 'user')
+    @site_news = NewsItem.site.latest.all(:include => 'user')
   end
 
   def login
