@@ -13,7 +13,7 @@
 
     %tbody
       - @messages.each do |message|
-        %tr.message
+        %tr.message(class="#{is_new_for_user?(message.created_at) ? 'new' : ''}")
           %td.sender= message.sender.name
           %td.subject= link_to(message.subject, message)
           %td.received= "#{time_ago_in_words(message.created_at)} ago"

@@ -277,11 +277,19 @@ button.leave-comment
     background-color: #e5e5e5
 
 .messages
+  .message.new
+    @extend tr.warning
+    font-weight: bold
+
   .sender, .recipient
     width: 25%
 
   .subject
     width: 50%
+
+  .subject a:empty:before
+    @extend .muted-text
+    content: "(no subject)"
 
 a.reply
   @extend .btn, .btn-info
