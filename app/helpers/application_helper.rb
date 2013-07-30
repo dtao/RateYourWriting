@@ -33,6 +33,10 @@ module ApplicationHelper
     content
   end
 
+  def http_url(route)
+    self.send(:"#{route}_url", :host => Env::HTTP_HOST)
+  end
+
   def login_url_for_env
     if Rails.env.production?
       login_url(:protocol => 'https', :host => Env::HTTPS_HOST)
