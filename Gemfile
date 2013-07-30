@@ -52,6 +52,7 @@ group :production do
 end
 
 group :development do
+  gem 'debugger'
   gem 'mustache'
   gem 'query_diet', :github => 'dtao/query_diet'
 end
