@@ -1,30 +1,22 @@
 %nav
-  .panel-heading RateYourWriting
-  %p Writers helping writers
-
   %ul
+    %li.header RateYourWriting
     %li= link_to('Home', http_url('root'))
     %li= link_to('About', http_url('about'))
 
-  .panel-heading Submissions
-  %p Poems, stories, articles, etc.
-
-  %ul
+    %li.divider
+    %li.header Submissions
     %li= link_to('Most recent', http_url('submissions'))
     %li= link_to('Highest rated', submissions_url(:sort => 'rating'))
 
-  - if logged_in? && current_user.admin?
-    .panel-heading Admin
-    %p Like a boss
-
-    %ul
+    - if logged_in? && current_user.admin?
+      %li.divider
+      %li.header Admin
       %li= link_to('Users', http_url('users'))
       %li= link_to('Quotes', http_url('quotes'))
 
-  .panel-heading Account
-  %p View messages, manage your preferences, etc.
-
-  %ul
+    %li.divider
+    %li.header Account
     - if logged_in?
       %li= link_to('New submission', http_url('new_submission'))
       %li

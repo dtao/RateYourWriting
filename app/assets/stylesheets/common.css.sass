@@ -53,14 +53,8 @@
   -o-transition: border linear 0.2s, box-shadow linear 0.2s
   transition: border linear 0.2s, box-shadow linear 0.2s
 
-@mixin smallControl($width)
-  @extend .clearfix
-  @include span($width)
-
-  display: block
-
 nav
-  @extend .panel, .panel-info, .hidden-sm
+  @extend .dropdown, .clearfix
 
   position: fixed
   top: 24px
@@ -68,16 +62,18 @@ nav
   width: 200px
 
   ul
-    @extend .list-group, .list-group-flush
+    @extend .dropdown-menu
 
-    &:not(:last-child)
-      margin-bottom: 20px
+    display: block
 
-    li
-      @extend .list-group-item
+    li.header
+      @extend .dropdown-header
 
-      span.unread-count
-        @extend .badge
+    li.divider
+      @extend .dropdown-divider
+
+    li span.unread-count
+      @extend .badge
 
 main
   @extend .container
