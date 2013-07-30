@@ -1,0 +1,37 @@
+%header
+  %h1 Markdown Help
+
+%p
+  = link_to('Markdown', 'http://daringfireball.net/projects/markdown/')
+  is a text format that makes it easy to blah blah blah
+
+= markdown_editor do
+  :preserve
+    Underline headings with double dashes
+    =====================================
+
+    Subheadings get single dashes
+    -----------------------------
+
+    Use *stars for italic text*, and **double stars for bold text**.
+
+    Use `ticks for monospaced text` (useful for emulating a typewriter).
+
+    Create bullet lists by prefixing lines with dashes:
+
+    - Item 1
+    - Item 2
+    - Item 3
+
+    Create numbered lists with... well, numbers:
+
+    1. Item 1
+    2. Item 2
+    3. Item 3
+
+    Preface blocks with the > character for blockquotes:
+
+    > I recently took up ice sculpting. Last night
+    > I made an ice cube. This morning I made 12.
+    > I was prolific. -Mitch Hedberg
+

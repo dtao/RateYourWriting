@@ -13,6 +13,7 @@ RateYourWriting::Application.routes.draw do
   get 'register' => 'home#register'
   get 'logout' => 'home#logout'
   get 'about' => 'home#about'
+  get 'markdown_help' => 'home#markdown_help'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

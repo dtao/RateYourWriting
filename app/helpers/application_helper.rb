@@ -52,4 +52,10 @@ module ApplicationHelper
       register_path
     end
   end
+
+  def markdown_editor(&content_block)
+    render(:partial => 'layouts/markdown_editor', :locals => {
+      :content => capture(&content_block)
+    })
+  end
 end

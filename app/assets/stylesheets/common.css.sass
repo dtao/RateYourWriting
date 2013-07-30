@@ -1,7 +1,7 @@
 @import 'bootstrap'
 @import 'variables'
 
-@import url("http://fonts.googleapis.com/css?family=Source+Code+Pro")
+@import url("http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700")
 
 @mixin fillParent
   display: block
@@ -175,6 +175,9 @@ form
   .field
     @extend .form-group
 
+    aside
+      @extend .help-block
+
   input[type="text"],
   input[type="password"],
   textarea
@@ -197,10 +200,16 @@ form.login, form.register
   @include borderBox
 
   display: block
-  height: 400px
+  height: auto
+  min-height: 400px
   width: 100%
   font-family: "Source Code Pro", monospace
   cursor: text
+
+.CodeMirror-scroll
+  min-height: 400px
+  overflow-y: hidden
+  overflow-x: auto
 
 .CodeMirror-empty
   color: #888 !important
@@ -351,3 +360,14 @@ table.quotes
 
   .source, .user
     width: 25%
+
+.markdown-editor
+  @extend .row
+
+  .CodeMirror
+    @include span(6)
+
+  iframe
+    @include span(6)
+    height: 400px
+    border: none

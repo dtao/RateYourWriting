@@ -16,4 +16,5 @@
 //= require codemirror
 //= require codemirror/modes/markdown
 //= require codemirror/addons/placeholder
+//= require marked
 //= require_tree .

@@ -40,6 +40,37 @@ onReady = ->
   $('#preferences_theme').on 'change', ->
     $('#theme-preview iframe').attr('src', "#{window.location.origin}/?theme=#{this.value}")
 
+  $('.markdown-editor').each ->
+    textarea = this.querySelector('textarea')
+    preview  = this.querySelector('iframe')
+
+    # Initialize CodeMirror instance
+    editor = CodeMirror.fromTextArea textarea,
+      mode: 'markdown',
+      lineWrapping: true
+
+    # Create a closure that will update the iframe with HTML rendered from the
+    # Markdown in the editor
+    updatePreview = ->
+      doc = preview.contentDocument || preview.contentWindow.document
+      html = marked(editor.getValue())
+      doc.open()
+      doc.write(html)
+      doc.close()
+
+      # Keep the iframe the same height as the editor
+      editorHeight = $(editor.getWrapperElement()).height()
+      $(preview).height(editorHeight)
+
+    # Throttle updates to keep from stressing out the browser's JS engine
+    timeoutId = null
+    editor.on 'change', ->
+      clearTimeout(timeoutId) if timeoutId?
+      timeoutId = setTimeout updatePreview, 500
+
+    # Update the preview right away, in case there's already text in the editor
+    updatePreview()
+
   hideNoticeAfterDelay(3000)
 
 $(document).ready onReady

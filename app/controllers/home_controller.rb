@@ -44,6 +44,9 @@ class HomeController < ApplicationController
   def about
   end
 
+  def markdown_help
+  end
+
   def preferences
     @preferences = current_user.preferences || UserPreferences.create!({
       :user => current_user,
