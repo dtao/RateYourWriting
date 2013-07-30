@@ -3,7 +3,7 @@
 
 @import url("http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700")
 
-@mixin fillParent
+@mixin fill-parent
   display: block
   position: absolute
   top: 0
@@ -21,7 +21,7 @@
   z-index: 1
 
   &:before
-    @include fillParent
+    @include fill-parent
     @include translucent($opacity)
 
     display: block
@@ -32,26 +32,9 @@
 @mixin span($columns)
   @extend .col-lg-#{$columns}, [class^="col-"]
 
-@mixin borderBox
+@mixin border-box
   -moz-box-sizing: border-box
   box-sizing: border-box
-
-@mixin inputLike
-  border: 1px solid #cccccc
-  border-radius: 4px
-  box-sizing: border-box
-  margin-bottom: 10px
-  padding: 4px 6px
-
-@mixin focusedInputLike
-  border-color: rgba(82, 168, 236, 0.8)
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s
-  transition: border linear 0.2s, box-shadow linear 0.2s
 
 nav
   @extend .dropdown, .clearfix
@@ -200,7 +183,7 @@ form.login, form.register
 
 .CodeMirror
   @extend .form-control
-  @include borderBox
+  @include border-box
 
   display: block
   height: auto
@@ -313,12 +296,12 @@ a.reply
   width: 100%
 
   iframe
-    @include fillParent
+    @include fill-parent
     border: none
     overflow: hidden
 
   &:before
-    @include fillParent
+    @include fill-parent
     @include translucent(0.1)
 
     content: ''
