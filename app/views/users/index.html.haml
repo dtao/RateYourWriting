@@ -4,15 +4,17 @@
 %table.users
   %thead
     %tr
-      %th Name
-      %th E-mail
-      %th Submissions
-      %th Average Rating
+      %th.name Name
+      %th.email E-mail
+      %th.submissions Submissions
+      %th.average-rating Average rating
+      %th.created-at Member since
 
   %tbody
     - @users.each do |user|
-      %tr
-        %td= link_to(user.name, user)
-        %td= mail_to(user.email)
-        %td= user.submissions_count
-        %td= number_with_precision(user.average_rating, :precision => 2)
+      %tr.user
+        %td.name= link_to(user.name, user)
+        %td.email= mail_to(user.email)
+        %td.submissions= user.submissions_count
+        %td.average-rating= number_with_precision(user.average_rating, :precision => 2)
+        %td.created-at= "#{time_ago_in_words(user.created_at)} ago"
