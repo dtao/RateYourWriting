@@ -17,19 +17,23 @@ class ApplicationController < ActionController::Base
   end
 
   def login_user(user)
+    login = nil
+
     if user.email_verified?
-      session[:user_id] = user.id
+      login = SingleUseLogin.create!(:user => user)
+
       user.update_attributes({
         :previous_login => user.last_login,
         :last_login => Time.now.utc
       })
 
+      # Send the user back to the HTTP host w/ a single-use login token.
+      redirect_to login_url(:protocol => 'http', :host => Env::HTTP_HOST, :token => login.try(:token))
+
     else
       alert 'You must verify your e-mail address.', :error
+      redirect_to root_url(:protocol => 'http', :host => Env::HTTP_HOST)
     end
-
-    # No need to serve every page henceforth over HTTPS!
-    redirect_to root_url(:protocol => 'http', :host => Env::HTTP_HOST)
   end
 
   def require_admin

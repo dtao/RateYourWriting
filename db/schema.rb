@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130729224224) do
+ActiveRecord::Schema.define(version: 20130730145250) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20130729224224) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "single_use_logins", force: true do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "single_use_logins", ["token"], name: "index_single_use_logins_on_token", using: :btree
 
   create_table "submissions", force: true do |t|
     t.integer  "user_id"

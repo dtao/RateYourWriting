@@ -20,8 +20,14 @@ class HomeController < ApplicationController
         return redirect_to :action => 'login'
       end
 
-      alert "Welcome back, #{user.name}!", :success
       login_user(user)
+
+    elsif params[:token]
+      token = SingleUseLogin.find_by_token(params[:token])
+      user = token.use_and_destroy!
+      session[:user] = user.id
+      alert "Welcome back, #{user.name}!", :success
+      redirect_to root_path
     end
   end
 
