@@ -40,7 +40,11 @@ class ApplicationController < ActionController::Base
       })
 
       # Send the user back to the HTTP host w/ a single-use login token.
-      redirect_to login_url(:protocol => 'http', :host => Env::HTTP_HOST, :token => login.try(:token))
+      redirect_to login_with_token_url({
+        :protocol => 'http',
+        :host => Env::HTTP_HOST,
+        :token => login.token
+      })
 
     else
       alert 'You must verify your e-mail address.', :error

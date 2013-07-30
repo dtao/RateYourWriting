@@ -21,14 +21,15 @@ class HomeController < ApplicationController
       end
 
       login_user(user)
-
-    elsif params[:token]
-      token = SingleUseLogin.find_by_token(params[:token])
-      user = token.use_and_destroy!
-      session[:user_id] = user.id
-      alert "Welcome back, #{user.name}!", :success
-      redirect_to root_path
     end
+  end
+
+  def login_with_token
+    token = SingleUseLogin.find_by_token(params[:token])
+    user = token.use_and_destroy!
+    session[:user_id] = user.id
+    alert "Welcome back, #{user.name}!", :success
+    redirect_to root_path
   end
 
   def register
