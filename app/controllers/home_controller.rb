@@ -25,7 +25,7 @@ class HomeController < ApplicationController
     elsif params[:token]
       token = SingleUseLogin.find_by_token(params[:token])
       user = token.use_and_destroy!
-      session[:user] = user.id
+      session[:user_id] = user.id
       alert "Welcome back, #{user.name}!", :success
       redirect_to root_path
     end
