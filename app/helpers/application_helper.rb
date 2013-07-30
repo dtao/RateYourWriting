@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def http_url(route)
-    self.send(:"#{route}_url", :host => Env::HTTP_HOST)
+    self.send(:"#{route}_url", :protocol => 'http', :host => Env::HTTP_HOST)
   end
 
   def login_url_for_env
