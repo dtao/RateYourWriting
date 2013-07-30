@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require twitter/bootstrap
 //= require codemirror
 //= require codemirror/modes/markdown
 //= require codemirror/addons/placeholder

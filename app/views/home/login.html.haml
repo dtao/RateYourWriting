@@ -1,7 +1,7 @@
 %header
   %h1 Log in
 
-= form_tag do
+= form_tag(login_url, :class => 'login') do
   .field
     = label_tag :email
     = text_field_tag :email

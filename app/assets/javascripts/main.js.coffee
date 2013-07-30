@@ -1,3 +1,10 @@
+hideNoticeAfterDelay = (delay) ->
+  hideNotice = ->
+    $('#notice').slideUp ->
+      $('#notice').remove()
+
+  setTimeout hideNotice, delay
+
 onReady = ->
   $('.editor').each ->
     CodeMirror.fromTextArea this,
@@ -32,6 +39,8 @@ onReady = ->
 
   $('#preferences_theme').on 'change', ->
     $('#theme-preview iframe').attr('src', "#{window.location.origin}/?theme=#{this.value}")
+
+  hideNoticeAfterDelay(3000)
 
 $(document).ready onReady
 

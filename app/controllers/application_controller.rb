@@ -79,11 +79,6 @@ class ApplicationController < ActionController::Base
       time > current_user.previous_login
   end
 
-  def handle_exception(exception)
-    alert exception.message, :error
-    redirect_to request.referrer || root_path
-  end
-
   def set_theme
     possible_themes = UserPreferences::THEMES
 
@@ -131,5 +126,17 @@ class ApplicationController < ActionController::Base
     else
       { :notice => @notice.token }
     end
+  end
+
+  def handle_exception(exception)
+    case exception
+    when ActiveRecord::RecordInvalid
+      # TODO: Format record validation errors more nicely.
+      alert exception.message, :error
+    else
+      alert exception.message, :error
+    end
+
+    redirect_to request.referrer || root_path
   end
 end

@@ -1,27 +1,38 @@
-%ul
-  %li.header RateYourWriting
-  %li= link_to('Home', http_url('root'))
-  %li= link_to('About', http_url('about'))
+%nav
+  .panel-heading RateYourWriting
+  %p Writers helping writers
 
-  %li.header Submissions
-  %li= link_to('Most recent', http_url('submissions'))
-  %li= link_to('Highest rated', submissions_url(:sort => 'rating'))
+  %ul
+    %li= link_to('Home', http_url('root'))
+    %li= link_to('About', http_url('about'))
+
+  .panel-heading Submissions
+  %p Poems, stories, articles, etc.
+
+  %ul
+    %li= link_to('Most recent', http_url('submissions'))
+    %li= link_to('Highest rated', submissions_url(:sort => 'rating'))
 
   - if logged_in? && current_user.admin?
-    %li.header Admin
-    %li= link_to('Users', http_url('users'))
-    %li= link_to('Quotes', http_url('quotes'))
+    .panel-heading Admin
+    %p Like a boss
 
-  %li.header Account
-  - if logged_in?
-    %li= link_to('New submission', http_url('new_submission'))
-    %li
-      %a(href="#{http_url('messages')}")
-        Messages
-        - if @unread_message_count > 0
-          %span.unread-count= @unread_message_count
-    %li= link_to('Preferences', http_url('preferences'))
-    %li= link_to('Log out', http_url('logout'), { :'data-confirm' => 'Are you sure you want to log out? '})
-  - else
-    %li= link_to('Log in', login_url_for_env)
-    %li= link_to('Register', register_url_for_env)
+    %ul
+      %li= link_to('Users', http_url('users'))
+      %li= link_to('Quotes', http_url('quotes'))
+
+  .panel-heading Account
+  %p View messages, manage your preferences, etc.
+
+  %ul
+    - if logged_in?
+      %li= link_to('New submission', http_url('new_submission'))
+      %li
+        %a(href="#{http_url('messages')}")
+          Messages
+          - if @unread_message_count > 0
+            %span.unread-count= @unread_message_count
+      %li= link_to('Log out', http_url('logout'), { :'data-confirm' => 'Are you sure you want to log out? '})
+    - else
+      %li= link_to('Log in', login_url_for_env)
+      %li= link_to('Register', register_url_for_env)

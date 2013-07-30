@@ -2,14 +2,12 @@
 %html
   %head
     %title= page_title
-    = stylesheet_link_tag @theme, :media => 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag 'application', :media => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
   %body
-    %nav
-      = navigation_menu
+    = navigation_menu
 
     %main
       - if flash[:notice]

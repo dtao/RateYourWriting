@@ -23,9 +23,6 @@ gem 'redcarpet'
 # Use CodeMirror for editing submissions
 gem 'codemirror-rails'
 
-# Use Bootstrap to get some UI going quickly
-gem 'bootstrap-sass-rails'
-
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

@@ -5,8 +5,7 @@
       - if item.user == current_user
         = link_to('Edit', edit_news_item_path(item))
 
-  .content
-    != to_markdown(item.content)
+  != to_markdown(item.content)
 
   %footer
     Posted by

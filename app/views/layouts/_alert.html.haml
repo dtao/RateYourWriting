@@ -1,10 +1,4 @@
-#notice
-  %header
-    %button.close(data-dismiss-closest='#notice') &times;
-    %h3= type.to_s.humanize
-
-  .content
-    %p= message
-
-  .actions
-    %button(data-dismiss-closest='#notice') OK
+#notice(class="#{type}")
+  %button.close(data-dismiss-closest='#notice') &times;
+  %h4= type.to_s.humanize
+  %p= message

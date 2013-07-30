@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  force_ssl :host => Env::HTTPS_HOST, :only => [:login, :register]
+  force_ssl :host => Env::HTTPS_HOST, :only => [:login, :register], :unless => lambda { Rails.env.development? }
 
   def index
     @daily_news = NewsItem.daily.latest.all(:include => 'user')

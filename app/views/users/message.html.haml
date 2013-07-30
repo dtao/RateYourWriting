@@ -2,7 +2,7 @@
   %h1= "Send #{@user.name} a message"
 
 = form_for(@message) do |f|
-  = f.hidden_field :recipient_id
-  = f.text_field :subject, :placeholder => 'Enter a subject'
-  = f.text_area :body, :placeholder => 'Enter message in Markdown format'
+  .field= f.hidden_field :recipient_id
+  .field= f.text_field :subject, :placeholder => 'Enter a subject'
+  .field= f.text_area :body, :placeholder => 'Enter message in Markdown format'
   = f.submit 'Send message'

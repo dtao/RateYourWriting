@@ -7,16 +7,16 @@
   %table.messages
     %thead
       %tr
-        %th From
-        %th Subject
-        %th Received
+        %th.sender From
+        %th.subject Subject
+        %th.received Received
 
     %tbody
       - @messages.each do |message|
         %tr.message
-          %td= message.sender.name
-          %td= link_to(message.subject, message)
-          %td= "#{time_ago_in_words(message.created_at)} ago"
+          %td.sender= message.sender.name
+          %td.subject= link_to(message.subject, message)
+          %td.received= "#{time_ago_in_words(message.created_at)} ago"
 
 .tab-pane#outbox
   %h2 Outbox
@@ -24,13 +24,13 @@
   %table.messages
     %thead
       %tr
-        %th To
-        %th Subject
-        %th Received
+        %th.recipient To
+        %th.subject Subject
+        %th.sent Sent
 
     %tbody
       - @sent_messages.each do |message|
         %tr.message
-          %td= message.recipient.name
-          %td= link_to(message.subject, message)
-          %td= "#{time_ago_in_words(message.created_at)} ago"
+          %td.recipient= link_to(message.recipient.name, message.recipient)
+          %td.subject= link_to(message.subject, message)
+          %td.sent= "#{time_ago_in_words(message.created_at)} ago"

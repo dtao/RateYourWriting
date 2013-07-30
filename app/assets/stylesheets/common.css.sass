@@ -1,3 +1,6 @@
+@import 'bootstrap'
+@import 'variables'
+
 @import url("http://fonts.googleapis.com/css?family=Source+Code+Pro")
 
 @mixin fillParent
@@ -27,7 +30,7 @@
     z-index: -1
 
 @mixin span($columns)
-  @extend .span#{$columns}, [class*="span"]
+  @extend .col-lg-#{$columns}, [class^="col-"]
 
 @mixin borderBox
   -moz-box-sizing: border-box
@@ -50,69 +53,90 @@
   -o-transition: border linear 0.2s, box-shadow linear 0.2s
   transition: border linear 0.2s, box-shadow linear 0.2s
 
+@mixin smallControl($width)
+  @extend .clearfix
+  @include span($width)
+
+  display: block
+
 nav
-  @extend .well
+  @extend .panel, .panel-info, .hidden-sm
 
   position: fixed
   top: 24px
   left: 40px
   width: 200px
-  padding: 8px 0
 
   ul
-    @extend .nav, .nav-list
+    @extend .list-group, .list-group-flush
 
-    li:first-child
-      font-weight: bold
+    &:not(:last-child)
+      margin-bottom: 20px
 
-    li.header
-      @extend .nav-header
-      text-shadow: none
-
-    li a
-      text-shadow: none
+    li
+      @extend .list-group-item
 
       span.unread-count
-        @extend .badge, .badge-info
-
-header
-  p
-    @extend .lead
+        @extend .badge
 
 main
   @extend .container
-  margin-left: 280px
+
+  @media all and (min-width: $screen-small)
+    margin-left: 280px
+    margin-right: 40px
+
+  @media all and (max-width: $screen-small)
+    padding-left: 15px
+    padding-right: 15px
+
   padding-top: 24px
   padding-bottom: 64px
+
+main > header
+  margin-bottom: 10px
+  padding-bottom: 10px
+  border-bottom: 1px solid $hr-border
+
+  p
+    @extend .lead
+
+  h1 a
+    @extend .btn, .btn-small, .btn-info
 
 footer
   padding: 0 1em
 
 table
-  @extend .table, .table-striped, .table-hover
+  @extend .table, .table-striped, .table-hover, .table-condensed
 
 #notice
-  @extend .modal
+  @extend .alert
 
-  header
-    @extend .modal-header
+  &.success
+    @extend .alert-success
 
-  .content
-    @extend .modal-body
+  &.info
+    @extend .alert-info
 
-  .actions
-    @extend .modal-footer
+  &.warning
+    @extend .alert-warning
 
-    button
-      @extend .btn
+  &.error
+    @extend .alert-danger
+
+  p:last-child
+    margin-bottom: 0
 
 blockquote#quote
   @extend .muted
 
-  width: 75%
+  @media all and (min-width: $screen-small)
+    width: 75%
+
   padding-top: 10px
   margin: 40px auto
-  border-top: 1px solid $hrBorder
+  border-top: 1px solid $hr-border
   border-left: none
 
   footer
@@ -140,7 +164,7 @@ aside.kinds
       content: " | "
 
 #news
-  @extend .row-fluid
+  @extend .row
 
   #daily-news
     @include span(6)
@@ -149,16 +173,17 @@ aside.kinds
     @include span(6)
 
 a[class*="new-"]
-  @extend .btn, .btn-inverse
+  @extend .btn, .btn-info
 
-form[class*="new_"],
-form[class*="edit_"]
+form
+  .field
+    @extend .form-group
+
   input[type="text"],
   input[type="password"],
   textarea
-    @extend .input-block-level
+    @extend .form-control
 
-form
   input[type="submit"], button
     @extend .btn
 
@@ -166,13 +191,17 @@ form
     @extend .btn-primary
 
   button
-    @extend .btn-inverse
+    @extend .btn-info
+
+form.login, form.register
+  @include span(6)
 
 .CodeMirror
-  @extend textarea
+  @extend .form-control
   @include borderBox
 
   display: block
+  height: 400px
   width: 100%
   font-family: "Source Code Pro", monospace
   cursor: text
@@ -181,7 +210,7 @@ form
   color: #888 !important
 
 .CodeMirror-focused
-  @extend textarea:focus
+  @extend .form-control:focus
 
 table.submissions
   th, td
@@ -211,14 +240,6 @@ span.highlight
     content: 'by '
     font-size: 90%
 
-header
-  margin-bottom: 10px
-  padding-bottom: 10px
-  border-bottom: 1px solid $hrBorder
-
-  h1 a
-    @extend .btn, .btn-inverse
-
 article.submission
   margin-top: 20px
 
@@ -234,16 +255,15 @@ span.rating a
     @extend .badge-info
 
 span.current a
-  @extend .badge-success
+  background-color: $brand-success
 
 form.new-comment
   @extend .well
 
-button.leave-comment
-  @extend .btn-mini
+  margin-top: 10px
 
-#comment
-  @include span(6)
+button.leave-comment
+  @extend .btn-default, .btn-mini
 
 .comment
   padding: 4px 6px
@@ -260,8 +280,12 @@ button.leave-comment
   &:nth-of-type(even)
     background-color: #e5e5e5
 
-.messages-navigation
-  @extend .nav, .nav-tabs
+.messages
+  .sender, .recipient
+    width: 25%
+
+  .subject
+    width: 50%
 
 #theme-preview
   position: relative
@@ -301,27 +325,17 @@ button.leave-comment
     z-index: 2
 
 .news-item
-  position: relative
-  margin: 10px 0
+  @extend .panel, .panel-primary
 
   header h1
-    font-size: 125%
+    @extend .panel-heading
+    font-size: $font-size-large
 
     a
-      @extend .btn-small
-
-  .content
-    padding-bottom: 30px
+      @extend .btn-mini, .btn-default, .pull-right
 
   footer
-    @include backdrop(#888, 0.3)
-
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    height: 30px
-    line-height: 30px
+    @extend .panel-footer
 
 table.quotes
   .content
