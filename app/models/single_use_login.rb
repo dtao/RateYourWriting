@@ -1,3 +1,5 @@
+require 'has_token'
+
 class SingleUseLogin < ActiveRecord::Base
   include HasToken
 

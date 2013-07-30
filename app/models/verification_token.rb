@@ -1,3 +1,5 @@
+require 'has_token'
+
 class VerificationToken < ActiveRecord::Base
   include HasToken
 
