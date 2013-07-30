@@ -91,7 +91,7 @@ RateYourWriting::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  # Use rateyourwriting.net by default for URLs.
-  config.routes.default_url_options = { :host => Env::HTTP_HOST }
 end
+
+# Use rateyourwriting.net by default for URLs.
+Rails.application.routes.default_url_options = { :host => Env::HTTP_HOST }
