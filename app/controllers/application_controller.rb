@@ -11,10 +11,7 @@ class ApplicationController < ActionController::Base
 
   def alert(message, type=:info)
     if request.env['HTTP_HOST'] == Env::HTTP_HOST
-      flash[:notice] = {
-        :message => message,
-        :type => type
-      }
+      alert_with_flash(message, type)
 
     else
       @notice = SingleUseNotice.create!({
@@ -22,6 +19,13 @@ class ApplicationController < ActionController::Base
         :message => message
       })
     end
+  end
+
+  def alert_with_flash(message, type=:info)
+    flash[:notice] = {
+      :message => message,
+      :type => type
+    }
   end
 
   def login_user(user)
@@ -112,7 +116,7 @@ class ApplicationController < ActionController::Base
       notice = SingleUseNotice.find_by_token(params[:notice])
       if notice
         message, type = notice.use_and_destroy!
-        alert message, *type
+        alert_with_flash message, *type
       end
     end
   end
