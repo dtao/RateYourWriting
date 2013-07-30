@@ -32,4 +32,20 @@ module ApplicationHelper
 
     content
   end
+
+  def login_url_for_env
+    if Rails.env.production?
+      login_url(:protocol => 'https', :host => Env::HTTPS_HOST)
+    else
+      login_path
+    end
+  end
+
+  def register_url_for_env
+    if Rails.env.production?
+      register_url(:protocol => 'https', :host => Env::HTTPS_HOST)
+    else
+      register_path
+    end
+  end
 end

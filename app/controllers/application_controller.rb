@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     end
 
     # No need to serve every page henceforth over HTTPS!
-    redirect_to root_url(:protocol => 'http')
+    redirect_to root_url(:protocol => 'http', :host => Env::HTTP_HOST)
   end
 
   def require_admin
