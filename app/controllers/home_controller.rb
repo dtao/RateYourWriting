@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  force_ssl :if => lambda { Rails.env.production? }, :only => [:login, :register]
+  force_ssl :host => Env::HTTPS_HOST, :only => [:login, :register]
 
   def index
     @daily_news = NewsItem.daily.latest.all(:include => 'user')
