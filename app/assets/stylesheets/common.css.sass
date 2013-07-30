@@ -125,7 +125,7 @@ table
     margin-bottom: 0
 
 blockquote#quote
-  @extend .muted
+  @extend .muted-text
 
   @media all and (min-width: $screen-small)
     width: 75%
@@ -154,7 +154,7 @@ aside.kinds
   text-align: center
 
   span
-    @extend small, .muted
+    @extend small, .muted-text
 
     &:nth-child(n+2):before
       content: " | "
@@ -228,6 +228,7 @@ table.submissions
 
 span.highlight
   color: red
+  font-weight: bold
 
 .author
   @extend .lead
@@ -268,7 +269,7 @@ button.leave-comment
     font-weight: bold
 
   .time
-    @extend small, .muted, .pull-right
+    @extend small, .muted-text, .pull-right
 
   &:nth-of-type(n+2)
     margin-top: 10px
