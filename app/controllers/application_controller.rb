@@ -112,10 +112,11 @@ class ApplicationController < ActionController::Base
 
   def set_message
     if params.include?(:notice)
-      notice = SingleUseNotice.find_by_token(params[:notice])
+      notice = SingleUseNotice.find_by_token(params.delete(:notice))
       if notice
         message, type = notice.use_and_destroy!
         alert_with_flash message, *type
+        redirect_to request.path, params
       end
     end
   end
