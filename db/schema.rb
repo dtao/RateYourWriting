@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130730151112) do
+ActiveRecord::Schema.define(version: 20130731004735) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -86,9 +86,11 @@ ActiveRecord::Schema.define(version: 20130730151112) do
     t.decimal  "rating",         precision: 4, scale: 2, default: 0.0
     t.datetime "last_vote"
     t.datetime "last_comment"
+    t.boolean  "published",                              default: false
   end
 
   add_index "submissions", ["kind"], name: "index_submissions_on_kind", using: :btree
+  add_index "submissions", ["published"], name: "index_submissions_on_published", using: :btree
   add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
 
   create_table "user_preferences", force: true do |t|

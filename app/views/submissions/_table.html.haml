@@ -2,6 +2,8 @@
   %thead
     %tr
       %th.kind
+      - unless without.include?(:published)
+        %th.published Published?
       %th.title Title
       - unless without.include?(:writer)
         %th.writer Writer
@@ -12,8 +14,10 @@
 
   %tbody
     - @submissions.each do |submission|
-      %tr
+      %tr.submission(class="#{submission.published? && 'published' || ''}")
         %td.kind= submission.kind
+        - unless without.include?(:published)
+          %td.published
         %td.title
           = link_to(submission.title, submission)
           = "(#{submission.word_count})"

@@ -1,4 +1,5 @@
 @import 'bootstrap'
+@import 'bootstrap-glyphicons'
 @import 'variables'
 
 @import url("http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700")
@@ -165,6 +166,9 @@ form
     aside
       @extend .help-block
 
+    &.published
+      @extend .checkbox
+
   input[type="text"],
   input[type="password"],
   textarea
@@ -221,6 +225,15 @@ table.submissions
 
   .votes, .rating, .comments
     width: 10%
+
+tr.submission
+  &.published
+    td.published
+      @extend .glyphicon, .glyphicon-ok
+
+  &:not(.published)
+    td
+      @extend .text-muted
 
 span.highlight
   color: red

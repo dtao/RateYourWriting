@@ -6,4 +6,4 @@
   - if logged_in?
     %p Numbers in <span class="highlight">red</span> indicate one or more new votes/comments since your last visit.
 
-= submissions_table
+= submissions_table(:without => [:published])

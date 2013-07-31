@@ -20,6 +20,8 @@ class Submission < ActiveRecord::Base
   validates_presence_of :body
   validates_uniqueness_of :title, :scope => :user_id
 
+  scope :published, -> { where(:published => true) }
+
   # TODO: Figure out how the heck to prevent ActiveRecord from loading the body
   # of every submission into memory by default.
   before_save :set_length

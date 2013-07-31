@@ -1,15 +1,9 @@
 class SubmissionsController < ApplicationController
   def index
-    options = {
-      :include => 'user',
-      :order => 'id desc',
-      :limit => 30
-    }
+    order = params[:sort] == 'rating' ? { :rating => :desc } : { :id => :desc }
 
-    options[:conditions] = { :kind => params[:kind] } if params.include?(:kind)
-    options[:order] = 'rating desc' if params[:sort] == 'rating'
-
-    @submissions = Submission.all(options)
+    @submissions = Submission.published.order(order).limit(30).includes(:user)
+    @submissions = @submissions.where(:kind => params[:kind]) if params.include?(:kind)
   end
 
   def show
@@ -77,6 +71,6 @@ class SubmissionsController < ApplicationController
   private
 
   def submission_params
-    params.required(:submission).permit(:kind, :title, :body).merge(:user => current_user)
+    params.required(:submission).permit(:kind, :title, :body, :published).merge(:user => current_user)
   end
 end

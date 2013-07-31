@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @submissions = @user.submissions.all(:order => 'id desc')
+    @submissions = @user.submissions.order(:id => :desc)
+    @submissions = @submissions.published unless @user == current_user
   end
 
   def create
