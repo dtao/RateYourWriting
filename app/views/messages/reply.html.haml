@@ -1,4 +1,4 @@
-%header
+- content_for(:header) do
   %h1= "Reply to #{@source.sender.name}"
 
 %h3= @source.subject

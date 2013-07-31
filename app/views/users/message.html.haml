@@ -1,4 +1,4 @@
-%header
+- content_for(:header) do
   %h1= "Send #{@user.name} a message"
 
 = render(:partial => 'messages/form')

@@ -1,4 +1,4 @@
-%header
+- content_for(:header) do
   %h1 Register
 
 = form_for(User.new, :controller => 'users', :action => 'create', :html => { :class => 'register' }) do |f|

@@ -7,9 +7,13 @@
     = csrf_meta_tags
 
   %body
-    = navigation_menu
-
     %main
+      - if content_for?(:header)
+        %header
+          = yield(:header)
+
+      = navigation_menu
+
       - if flash[:notice]
         = alert(flash[:notice])
 

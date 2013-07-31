@@ -1,6 +1,6 @@
 - content_for(:title) { @user.name }
 
-%header
+- content_for(:header) do
   %h1
     = @user.name
     - if logged_in? && @user != current_user
