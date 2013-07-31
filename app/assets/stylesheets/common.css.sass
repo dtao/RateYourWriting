@@ -112,7 +112,7 @@ table
     margin-bottom: 0
 
 blockquote#quote
-  @extend .muted-text
+  @extend .text-muted
 
   @media all and (min-width: $screen-small)
     width: 75%
@@ -142,7 +142,7 @@ aside.kinds
   text-align: center
 
   span
-    @extend small, .muted-text
+    @extend small, .text-muted
 
     &:nth-child(n+2):before
       content: " | "
@@ -287,7 +287,7 @@ button.leave-comment
     @extend .media-heading
 
   .time
-    @extend small, .muted-text, .pull-right
+    @extend small, .text-muted, .pull-right
 
   &:nth-of-type(n+2)
     margin-top: 10px
@@ -307,7 +307,7 @@ button.leave-comment
     width: 50%
 
   .subject a:empty:before
-    @extend .muted-text
+    @extend .text-muted
     content: "(no subject)"
 
 a.reply
