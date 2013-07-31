@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       user = User.create!(user_params)
       UserMailer.email_verification(user).deliver
       alert "Check your e-mail, #{user.name}!", :success
-      redirect_to root_url(:protocol => 'http', :host => Env::HTTP_HOST)
+      redirect_to root_url(Env.url_options('http'))
     end
   end
 

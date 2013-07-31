@@ -27,5 +27,5 @@
             %span.unread-count= @unread_message_count
       %li= link_to('Log out', http_url('logout'), { :'data-confirm' => 'Are you sure you want to log out? '})
     - else
-      %li= link_to('Log in', login_url_for_env)
-      %li= link_to('Register', register_url_for_env)
+      %li= link_to('Log in', https_url('login'))
+      %li= link_to('Register', https_url('register'))

@@ -36,24 +36,16 @@ module ApplicationHelper
   end
 
   def http_url(route, *args)
+    url_with_protocol(route, 'http', *args)
+  end
+
+  def https_url(route, *args)
+    url_with_protocol(route, 'https', *args)
+  end
+
+  def url_with_protocol(route, protocol, *args)
     options = args.last.is_a?(Hash) ? args.pop : {}
-    self.send(:"#{route}_url", *args, options.merge(:protocol => 'http', :host => Env::HTTP_HOST))
-  end
-
-  def login_url_for_env
-    if Rails.env.production?
-      login_url(:protocol => 'https', :host => Env::HTTPS_HOST)
-    else
-      login_path
-    end
-  end
-
-  def register_url_for_env
-    if Rails.env.production?
-      register_url(:protocol => 'https', :host => Env::HTTPS_HOST)
-    else
-      register_path
-    end
+    self.send(:"#{route}_url", *args, options.merge(Env.url_options(protocol)))
   end
 
   def markdown_editor(&content_block)
