@@ -35,8 +35,9 @@ module ApplicationHelper
     content
   end
 
-  def http_url(route)
-    self.send(:"#{route}_url", :protocol => 'http', :host => Env::HTTP_HOST)
+  def http_url(route, *args)
+    options = args.last.is_a?(Hash) ? args.pop : {}
+    self.send(:"#{route}_url", *args, options.merge(:protocol => 'http', :host => Env::HTTP_HOST))
   end
 
   def login_url_for_env
