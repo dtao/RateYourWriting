@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130731004735) do
+ActiveRecord::Schema.define(version: 20130731135607) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20130731004735) do
     t.string   "theme"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url"
   end
 
   add_index "user_preferences", ["user_id"], name: "index_user_preferences_on_user_id", using: :btree
