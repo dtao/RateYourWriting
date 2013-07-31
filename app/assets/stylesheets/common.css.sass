@@ -2,7 +2,7 @@
 @import 'bootstrap-glyphicons'
 @import 'variables'
 
-@import url("http://fonts.googleapis.com/css?family=Lato:300,400,700|Source+Code+Pro:400,700")
+@import url("http://fonts.googleapis.com/css?family=Lora|Oxygen|Raleway:300,400,700|Source+Code+Pro:400,700")
 
 @mixin fill-parent
   display: block
@@ -37,11 +37,17 @@
   -moz-box-sizing: border-box
   box-sizing: border-box
 
-h1, h2, h3, h4, h5, h6, .lead
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif
+h1, h2, h3, h4, h5, h6, .lead, th
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif
+
+th
+  font-weight: bold
 
 h1, h2, .lead
   font-weight: 300
+
+input[type="submit"], button, .btn
+  font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif
 
 nav
   @extend .dropdown, .hidden-sm
@@ -58,6 +64,9 @@ nav
     border: none
     border-right: 1px solid $hr-border
     box-shadow: none
+
+    li
+      font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif
 
     li.header
       @extend .dropdown-header
@@ -90,7 +99,10 @@ main > header
   p
     @extend .lead
 
-  h1 a
+  h1
+    font-size: 48pt
+
+  a
     @extend .btn, .btn-small, .btn-default
 
 footer
@@ -254,6 +266,7 @@ span.highlight
 
 article.submission
   margin-top: 20px
+  font-family: "Lora", "Cambria", "Georgia", "Times New Roman", serif
 
   p
     white-space: pre-wrap
