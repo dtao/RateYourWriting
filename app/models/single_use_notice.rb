@@ -7,7 +7,7 @@ class SingleUseNotice < ActiveRecord::Base
 
   def use_and_destroy!
     begin
-      return [self.message, self.type]
+      return [self.message, self.notice_type]
     ensure
       self.destroy!
     end

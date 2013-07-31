@@ -3,7 +3,7 @@ class CreateSingleUseNotices < ActiveRecord::Migration
     create_table :single_use_notices do |t|
       t.integer :user_id
       t.string  :token
-      t.string  :type
+      t.string  :notice_type
       t.string  :message
       t.timestamps
     end

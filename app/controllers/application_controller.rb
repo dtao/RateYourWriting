@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
     else
       @notice = SingleUseNotice.create!({
         :user => current_user,
-        :message => message
+        :message => message,
+        :notice_type => type
       })
     end
   end

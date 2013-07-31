@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20130731004735) do
   create_table "single_use_notices", force: true do |t|
     t.integer  "user_id"
     t.string   "token"
-    t.string   "type"
+    t.string   "notice_type"
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
