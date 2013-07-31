@@ -76,7 +76,8 @@ Dir.glob(File.join(seed_dir, 'submissions', '**', '*.md')) do |file|
     :kind => kind,
     :title => title,
     :body => content,
-    :created_at => random_time_days_ago(14)
+    :created_at => random_time_days_ago(14),
+    :published => true
   })
 
   puts "#{user.name} wrote '#{submission.title}' #{time_ago_in_words(submission.created_at)} ago."
