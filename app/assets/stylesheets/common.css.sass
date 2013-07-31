@@ -2,7 +2,7 @@
 @import 'bootstrap-glyphicons'
 @import 'variables'
 
-@import url("http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700")
+@import url("http://fonts.googleapis.com/css?family=Lato:300,400,700|Source+Code+Pro:400,700")
 
 @mixin fill-parent
   display: block
@@ -36,6 +36,12 @@
 @mixin border-box
   -moz-box-sizing: border-box
   box-sizing: border-box
+
+h1, h2, h3, h4, h5, h6, .lead
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif
+
+h1, h2, .lead
+  font-weight: 300
 
 nav
   @extend .dropdown, .hidden-sm
@@ -353,7 +359,7 @@ a.reply
 .news-item
   @extend .panel, .panel-primary
 
-  header h1
+  header h3
     @extend .panel-heading
     font-size: $font-size-large
 
