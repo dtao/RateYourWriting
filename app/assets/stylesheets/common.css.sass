@@ -262,10 +262,16 @@ button.leave-comment
   margin-top: 20px
 
 .comment
-  @extend .well
+  @extend .media, .well
+
+  img.profile-image
+    @extend .media-object, .pull-left
+
+  .content
+    @extend .media-body
 
   .commenter
-    font-weight: bold
+    @extend .media-heading
 
   .time
     @extend small, .muted-text, .pull-right

@@ -2,6 +2,9 @@
   %legend Comments
   - @comments.each do |comment|
     .comment
-      .commenter= link_to(comment.user.name, comment.user)
-      .time= "#{time_ago_in_words(comment.created_at)} ago"
-      .content!= to_markdown(comment.content)
+      = user_image_tag(comment.user, :class => 'profile-image')
+
+      .content
+        .commenter= link_to(comment.user.name, comment.user)
+        .body!= to_markdown(comment.content)
+        .time= "#{time_ago_in_words(comment.created_at)} ago"

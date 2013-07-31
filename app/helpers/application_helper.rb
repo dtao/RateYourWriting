@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 module ApplicationHelper
   def page_title
     [*content_for(:title), 'Rate Your Writing'].join(' - ')
@@ -57,5 +59,21 @@ module ApplicationHelper
     render(:partial => 'layouts/markdown_editor', :locals => {
       :content => capture(&content_block)
     })
+  end
+
+  # snagged directly from:
+  # https://en.gravatar.com/site/implement/images/ruby/
+  def user_image_tag(user, options={})
+    # get the email and make lowercase
+    email = user.email.downcase
+
+    # create the md5 hash
+    hash = Digest::MD5.hexdigest(email)
+
+    # set the alt attribute to the user's name
+    options = { :alt => user.name }.merge(options)
+
+    # compile URL
+    image_tag("http://www.gravatar.com/avatar/#{hash}?s=50&d=identicon", options)
   end
 end
