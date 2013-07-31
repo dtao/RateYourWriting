@@ -1,3 +1,5 @@
+Turbolinks.setContentWrapper('#wrapper')
+
 hideNoticeAfterDelay = (delay) ->
   hideNotice = ->
     $('#notice').slideUp ->
