@@ -8,12 +8,14 @@
     = csrf_meta_tags
 
   %body
+    = navigation_menu
+
     %main(class="#{params[:controller]}-#{params[:action]}")
       - if content_for?(:header)
         %header
           = yield(:header)
 
-      = navigation_menu
+      = inline_navigation_menu
 
       - if flash[:notice]
         = alert(flash[:notice])

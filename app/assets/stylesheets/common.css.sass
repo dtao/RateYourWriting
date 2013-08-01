@@ -54,7 +54,7 @@ h1, h2
 input[type="submit"], button, .btn
   font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif
 
-nav
+nav#navigation
   @extend .dropdown, .hidden-sm
 
   position: fixed
@@ -107,6 +107,14 @@ main > header
   h1
     font-size: 48pt
 
+    @media all and (max-width: $screen-small)
+      &:not(#site-title)
+        font-size: 24pt
+
+    em
+      @media all and (max-width: $screen-small)
+        display: block
+
     em:nth-child(odd)
       color: $brand-success
       font-style: normal
@@ -126,6 +134,15 @@ main > header
     a
       @extend .btn, .btn-small, .btn-default
 
+main > nav
+  @extend .visible-sm
+
+  ul
+    @extend .nav, .nav-pills
+
+    li
+      font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif
+
 main.users-show > header
   @extend .media
 
@@ -143,6 +160,14 @@ footer
 
 table
   @extend .table, .table-striped, .table-hover, .table-condensed
+
+  th, td
+    @extend .hidden-sm
+
+  @media all and (max-width: $screen-small)
+    th.title, td.title,
+    th.writer, td.writer
+      display: table-cell !important
 
 #notice
   @extend .alert
@@ -285,7 +310,6 @@ table.submissions
     width: 6%
 
   .title
-    text-align: right
     width: 40%
 
   .writer, .submitted

@@ -1,0 +1,6 @@
+%nav
+  %ul
+    %li(class="#{params[:controller] == 'home' ? 'active' : ''}")= link_to('Home', http_url('root'))
+    %li(class="#{params[:controller] == 'submissions' ? 'active' : ''}")= link_to('Latest', http_url('submissions'))
+    - if logged_in?
+      %li(class="#{params[:controller] == 'users' ? 'active' : ''}")= link_to('Profile', http_url('user', current_user))
