@@ -1,4 +1,4 @@
-= text_area_tag :body, content, :class => 'editor', :placeholder => 'Write your content in Markdown format'
+= form_helper.text_area field_name, :class => 'editor', :placeholder => 'Write your content in Markdown format'
 %aside
   = "# Heading 1 | ## Heading 2 | *italic* | **bold** | `typewriter` |"
   = link_to('see more', markdown_help_path)

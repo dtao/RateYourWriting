@@ -6,7 +6,7 @@
     = f.text_field :title, :placeholder => 'Enter a title'
 
   .field
-    = markdown_editor(@submission.body)
+    = markdown_editor(f, :body)
 
   .field.published
     = f.label :published do

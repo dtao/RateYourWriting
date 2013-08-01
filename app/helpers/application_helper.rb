@@ -48,9 +48,10 @@ module ApplicationHelper
     self.send(:"#{route}_url", *args, options.merge(Env.url_options(protocol)))
   end
 
-  def markdown_editor(content)
+  def markdown_editor(form_helper, field_name)
     render(:partial => 'layouts/markdown_editor', :locals => {
-      :content => content
+      :form_helper => form_helper,
+      :field_name => field_name
     })
   end
 
