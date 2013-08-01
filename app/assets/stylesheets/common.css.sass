@@ -184,12 +184,19 @@ form
     aside
       @extend .help-block
 
+    &.kind
+      @include span(4)
+
+      // TODO: Figure out a way to not require this!
+      padding-left: 0
+
     &.published
       @extend .checkbox
 
   input[type="text"],
   input[type="password"],
-  textarea
+  textarea,
+  select
     @extend .form-control
 
   input[type="submit"], button
