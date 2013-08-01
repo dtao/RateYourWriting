@@ -19,7 +19,7 @@
     %li.header Account
     - if logged_in?
       %li= link_to('Submissions', http_url('user', current_user))
-      %li= link_to('Settings', http_url('settings', current_user))
+      %li= link_to('Settings', http_url('settings'))
       %li
         %a(href="#{http_url('messages')}")
           Messages
