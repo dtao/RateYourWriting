@@ -25,4 +25,4 @@
       = render_news_item(item)
 
     - if logged_in? && current_user.admin?
-      %p= link_to('Post a new story', new_news_item_path, :class => 'new-story')
+      %p= link_to('Post a new story', new_news_item_path(:kind => 'S'), :class => 'new-story')

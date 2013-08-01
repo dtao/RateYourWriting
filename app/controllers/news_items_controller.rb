@@ -1,6 +1,6 @@
 class NewsItemsController < ApplicationController
   def new
-    @news_item = NewsItem.new
+    @news_item = NewsItem.new(:kind => params[:kind])
   end
 
   def create
