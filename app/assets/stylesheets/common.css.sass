@@ -4,6 +4,9 @@
 
 @import url("http://fonts.googleapis.com/css?family=Lora|Oxygen|Raleway:300,400,700|Source+Code+Pro:400,700")
 
+// This is from Bootstrap's website... because I like it.
+$brand-contrast: #563d7c
+
 @mixin fill-parent
   display: block
   position: absolute
@@ -37,13 +40,13 @@
   -moz-box-sizing: border-box
   box-sizing: border-box
 
-h1, h2, h3, h4, h5, h6, .lead, th
+h1, h2, h3, h4, h5, h6, th
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif
 
 th
   font-weight: bold
 
-h1, h2, .lead
+h1, h2
   font-weight: 300
 
 input[type="submit"], button, .btn
@@ -101,6 +104,22 @@ main > header
 
   h1
     font-size: 48pt
+
+    em:nth-child(odd)
+      color: $brand-success
+      font-style: normal
+
+    em:nth-child(even)
+      color: $brand-info
+      font-style: normal
+
+    em:first-child
+      color: $brand-contrast
+      font-style: normal
+
+    aside
+      @extend .label, .label-warning
+      font-size: 40%
 
     a
       @extend .btn, .btn-small, .btn-default
