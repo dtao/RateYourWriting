@@ -15,7 +15,7 @@
 %article.bio
   != to_markdown(@user.bio)
 
-= submissions_table(:without => [:writer])
+= submissions_table(:without => [:writer, *(@user != current_user ? :published : nil)])
 
 - if @user == current_user
   = link_to('New submission', new_submission_path, :class => 'new-submission')
