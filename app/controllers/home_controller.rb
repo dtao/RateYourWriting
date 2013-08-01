@@ -1,3 +1,5 @@
+require 'looks_like'
+
 class HomeController < ApplicationController
   force_ssl :host => Env::HTTPS_HOST, :only => [:login, :register], :unless => lambda { Rails.env.development? }
 
@@ -8,7 +10,13 @@ class HomeController < ApplicationController
 
   def login
     if request.post?
-      user = User.find_by_email(params[:email])
+      user = nil
+
+      if LooksLike.email?(params[:name_or_email])
+        user = User.find_by_email(params[:name_or_email])
+      end
+
+      user ||= User.find_by_name(params[:name_or_email])
 
       if user.nil?
         alert 'That user does not exist.', :warning

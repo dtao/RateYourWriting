@@ -4,8 +4,8 @@
 = form_tag(login_url, :class => 'login') do
   %fieldset
     .field
-      = label_tag :email
-      = text_field_tag :email
+      = label_tag :name_or_email
+      = text_field_tag :name_or_email, nil, :placeholder => 'e.g., "John Smith" or "johnsmith@example.com"'
 
     .field
       = label_tag :password
