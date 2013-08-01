@@ -137,6 +137,8 @@ main > header
 main > nav
   @extend .visible-sm
 
+  margin-bottom: 10px
+
   ul
     @extend .nav, .nav-pills
 
@@ -148,6 +150,8 @@ main.users-show > header
 
   img
     @extend .media-object, .pull-left
+    height: 120px
+    width: 120px
 
   .content
     @extend .media-body
@@ -213,6 +217,9 @@ aside.notes
 
   p
     margin-bottom: 0
+
+  @media all and (max-width: $screen-small)
+    display: none
 
 aside.kinds
   text-align: center
