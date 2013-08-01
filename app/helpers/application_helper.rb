@@ -73,7 +73,9 @@ module ApplicationHelper
     # set the alt attribute to the user's name
     options = { :alt => user.name }.merge(options)
 
+    size = options.delete(:size) || 50
+
     # compile URL
-    image_tag("http://www.gravatar.com/avatar/#{hash}?s=50&d=identicon", options)
+    image_tag("http://www.gravatar.com/avatar/#{hash}?s=#{size}&d=identicon", options)
   end
 end

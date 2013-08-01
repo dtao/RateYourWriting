@@ -2,6 +2,8 @@
 @import 'bootstrap-glyphicons'
 @import 'variables'
 
+// TODO: Organize this mess!
+
 @import url("http://fonts.googleapis.com/css?family=Lora|Oxygen|Raleway:300,400,700|Source+Code+Pro:400,700")
 
 // This is from Bootstrap's website... because I like it.
@@ -123,6 +125,18 @@ main > header
 
     a
       @extend .btn, .btn-small, .btn-default
+
+main.users-show > header
+  @extend .media
+
+  img
+    @extend .media-object, .pull-left
+
+  .content
+    @extend .media-body
+
+    h1
+      @extend .media-heading
 
 footer
   padding: 0 1em
