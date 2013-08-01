@@ -20,6 +20,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(params[:id])
+
+    if user != current_user
+      alert "You cannot change another user's settings!"
+      return redirect_to root_path
+    end
+
+    user.update_attributes(user_params)
+    alert 'Updated settings!', :success
+    redirect_to root_path
+  end
+
   def verify
     user = User.find(params[:id])
     token = VerificationToken.find_by_token(params[:token])
@@ -36,9 +49,21 @@ class UsersController < ApplicationController
     @message = Message.new(:recipient => @user)
   end
 
+  def preferences
+    preferences = current_user.preferences
+    current_user.preferences.update_attributes(preferences_params)
+    session[:theme] = params[:preferences][:theme]
+    alert 'Updated preferences!', :success
+    redirect_to root_path
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio)
+  end
+
+  def preferences_params
+    return params.require(:preferences).permit(:theme)
   end
 end

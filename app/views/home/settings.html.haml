@@ -1,0 +1,26 @@
+- content_for(:header) do
+  %h1 Account Settings
+
+= form_for(current_user) do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :bio, 'Biography'
+    = markdown_editor(f, :bio)
+
+  = f.submit 'Save'
+
+/ = form_for(@preferences, :as => :preferences, :url => preferences_path) do |f|
+/   .field
+/     = f.label :theme
+/     = f.select :theme, UserPreferences::THEMES, :'data-update' => '#theme-preview', :'data-field' => 'src'
+
+/   .actions
+/     = f.submit 'Save'
+
+/ %fieldset
+/   %legend Preview
+/   #theme-preview
+/     %iframe(src="/?theme=#{@theme}")

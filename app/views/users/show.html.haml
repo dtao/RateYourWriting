@@ -6,4 +6,10 @@
     - if logged_in? && @user != current_user
       = link_to('Send a message', send_message_path(@user))
 
+%article.bio
+  != to_markdown(@user.bio)
+
 = submissions_table(:without => [:writer])
+
+- if @user == current_user
+  = link_to('New submission', new_submission_path, :class => 'new-submission')

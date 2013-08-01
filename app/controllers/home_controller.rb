@@ -47,23 +47,10 @@ class HomeController < ApplicationController
   def markdown_help
   end
 
-  def preferences
+  def settings
     @preferences = current_user.preferences || UserPreferences.create!({
       :user => current_user,
       :theme => UserPreferences::DEFAULT_THEME
     })
-
-    if request.post? || request.patch?
-      @preferences.update_attributes(preferences_params)
-      session[:theme] = params[:preferences][:theme]
-      alert 'Updated preferences!', :success
-      redirect_to root_path
-    end
-  end
-
-  private
-
-  def preferences_params
-    return params.require(:preferences).permit(:theme)
   end
 end

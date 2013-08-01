@@ -9,7 +9,7 @@ RateYourWriting::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   match 'login' => 'home#login', :via => [:get, :post]
   get 'login_with_token' => 'home#login_with_token'
-  match 'preferences' => 'home#preferences', :via => [:get, :post, :patch]
+  get 'settings' => 'home#settings'
   get 'register' => 'home#register'
   get 'logout' => 'home#logout'
   get 'about' => 'home#about'
@@ -21,6 +21,7 @@ RateYourWriting::Application.routes.draw do
   post 'submissions/:id/comment' => 'submissions#comment', :as => :comment
   get 'users/:id/verify' => 'users#verify', :as => :verification
   get 'users/:id/message' => 'users#message', :as => :send_message
+  post 'users/:id/preferences' => 'users#preferences', :as => :preferences
   get 'messages/:id/reply' => 'messages#reply', :as => :reply
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
