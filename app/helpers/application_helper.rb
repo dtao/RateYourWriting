@@ -26,7 +26,7 @@ module ApplicationHelper
       :disable_indented_code_blocks => true
     })
 
-    @markdown.render(text)
+    @markdown.render(text || '')
   end
 
   def highlight(content, options=nil)
