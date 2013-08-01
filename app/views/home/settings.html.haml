@@ -7,6 +7,10 @@
     = f.text_field :name
 
   .field
+    = f.label :website
+    = f.text_field :website, :placeholder => 'Enter the URL of your personal website or blog (if you have one)'
+
+  .field
     = f.label :bio, 'Biography'
     = markdown_editor(f, :bio)
 

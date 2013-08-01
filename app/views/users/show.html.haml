@@ -6,6 +6,9 @@
     - if logged_in? && @user != current_user
       = link_to('Send a message', send_message_path(@user))
 
+  - if @user.website
+    %p= link_to(@user.website)
+
 %article.bio
   != to_markdown(@user.bio)
 

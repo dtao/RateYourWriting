@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801160258) do
+ActiveRecord::Schema.define(version: 20130801164508) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20130801160258) do
     t.boolean  "email_verified",                            default: false
     t.datetime "previous_login"
     t.text     "bio"
+    t.string   "website"
   end
 
   add_index "users", ["admin"], name: "index_users_on_admin", using: :btree
