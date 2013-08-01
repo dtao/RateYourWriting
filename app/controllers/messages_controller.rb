@@ -13,7 +13,8 @@ class MessagesController < ApplicationController
 
     @message = Message.new({
       :recipient => @source.sender,
-      :source => @source
+      :source => @source,
+      :subject => "Re: #{@source.subject}"
     })
   end
 
