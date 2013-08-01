@@ -23,8 +23,7 @@
       %li
         %a(href="#{http_url('messages')}")
           Messages
-          - if @unread_message_count > 0
-            %span.unread-count= @unread_message_count
+          %span.unread-count= @unread_message_count
       %li= link_to('Log out', http_url('logout'), { :'data-confirm' => 'Are you sure you want to log out? '})
     - else
       %li= link_to('Log in', https_url('login'))

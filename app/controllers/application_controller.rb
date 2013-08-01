@@ -101,10 +101,13 @@ class ApplicationController < ActionController::Base
 
   def set_unread_message_count
     if logged_in?
-      @unread_message_count = current_user.messages.where(['created_at > ?', current_user.previous_login]).count
-    else
-      @unread_message_count = 0
+      if current_user.previous_login.nil?
+        @unread_message_count = current_user.messages.count
+      else
+        @unread_message_count = current_user.messages.where(['created_at > ?', current_user.previous_login]).count
+      end
     end
+    @unread_message_count = nil if @unread_message_count == 0
   end
 
   def set_message
