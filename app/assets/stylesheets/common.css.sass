@@ -202,7 +202,10 @@ form
     @extend .btn-info
 
 form.login, form.register
-  @include span(6)
+  @extend .row
+
+  fieldset
+    @include span(6)
 
 .CodeMirror
   @extend .form-control
