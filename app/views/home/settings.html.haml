@@ -16,15 +16,15 @@
 
   = f.submit 'Save'
 
-/ = form_for(@preferences, :as => :preferences, :url => preferences_path) do |f|
-/   .field
-/     = f.label :theme
-/     = f.select :theme, UserPreferences::THEMES, :'data-update' => '#theme-preview', :'data-field' => 'src'
-
-/   .actions
-/     = f.submit 'Save'
-
-/ %fieldset
-/   %legend Preview
-/   #theme-preview
-/     %iframe(src="/?theme=#{@theme}")
+- # = form_for(@preferences, :as => :preferences, :url => preferences_path) do |f|
+- #   .field
+- #     = f.label :theme
+- #     = f.select :theme, UserPreferences::THEMES, :'data-update' => '#theme-preview', :'data-field' => 'src'
+- # 
+- #   .actions
+- #     = f.submit 'Save'
+- # 
+- # %fieldset
+- #   %legend Preview
+- #   #theme-preview
+- #     %iframe(src="/?theme=#{@theme}")
