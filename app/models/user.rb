@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :quotes
 
   validates_presence_of :name
+  validates_format_of :name, :without => /@/
   validates_presence_of :email
 
   after_create :generate_verification_token

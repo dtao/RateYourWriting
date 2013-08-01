@@ -36,6 +36,10 @@ describe User do
     lambda { User.create!(attributes.merge(:name => 'Adam')) }.should raise_error
   end
 
+  it 'does not allow "@" characters in names' do
+    lambda { User.create!(attributes.merge(:name => 'Dan@')) }.should raise_error
+  end
+
   it 'maintains a counter cache for submission count' do
     jack = users(:jack)
     lambda {
