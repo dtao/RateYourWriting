@@ -48,8 +48,14 @@ module ApplicationHelper
     self.send(:"#{route}_url", *args, options.merge(Env.url_options(protocol)))
   end
 
-  def markdown_editor(&content_block)
+  def markdown_editor(content)
     render(:partial => 'layouts/markdown_editor', :locals => {
+      :content => content
+    })
+  end
+
+  def markdown_editor_with_preview(&content_block)
+    render(:partial => 'layouts/markdown_editor_with_preview', :locals => {
       :content => capture(&content_block)
     })
   end

@@ -40,7 +40,7 @@ onReady = ->
   $('#preferences_theme').on 'change', ->
     $('#theme-preview iframe').attr('src', "#{window.location.origin}/?theme=#{this.value}")
 
-  $('.markdown-editor').each ->
+  $('.markdown-editor-with-preview').each ->
     textarea = this.querySelector('textarea')
     preview  = this.querySelector('iframe')
 

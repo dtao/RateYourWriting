@@ -6,10 +6,7 @@
     = f.text_field :title, :placeholder => 'Enter a title'
 
   .field
-    = f.text_area :body, :class => 'editor', :placeholder => 'Write your content in Markdown format'
-    %aside
-      = "# Heading 1 | ## Heading 2 | *italic* | **bold** | `typewriter` |"
-      = link_to('see more', markdown_help_path)
+    = markdown_editor(@submission.body)
 
   .field.published
     = f.label :published do

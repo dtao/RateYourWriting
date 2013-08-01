@@ -399,8 +399,13 @@ table.quotes
   .source, .user
     width: 25%
 
-.markdown-editor
+.markdown-editor-with-preview
   @extend .row
+
+  // Bootstrap tries to compensate by shifting the row left and having its children
+  // shift back to the right. I'm un-compensating because otherwise the editor sits
+  // off to the left.
+  margin-left: 0
 
   .CodeMirror
     @include span(6)

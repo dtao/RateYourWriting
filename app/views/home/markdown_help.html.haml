@@ -3,9 +3,10 @@
 
 %p
   = link_to('Markdown', 'http://daringfireball.net/projects/markdown/')
-  is a text format that makes it easy to blah blah blah
+  is a text format that makes it easy to add light styling to your work, without having to use HTML.
+  It's easy to write and easy to read.
 
-= markdown_editor do
+= markdown_editor_with_preview do
   :preserve
     Underline headings with double dashes
     =====================================
@@ -34,4 +35,3 @@
     > I recently took up ice sculpting. Last night
     > I made an ice cube. This morning I made 12.
     > I was prolific. -Mitch Hedberg
-
