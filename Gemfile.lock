@@ -4,13 +4,6 @@ GIT
   specs:
     query_diet (0.5.2)
 
-GIT
-  remote: git://github.com/dtao/turbolinks.git
-  revision: 18125babbf3e8e92e7704211298c67fd6d45c468
-  specs:
-    turbolinks (2.0.0)
-      coffee-rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -158,6 +151,8 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (1.3.0)
+      coffee-rails
     tzinfo (0.3.37)
     uglifier (2.1.2)
       execjs (>= 0.3.0)
@@ -186,5 +181,5 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   thin
-  turbolinks!
+  turbolinks
   uglifier (>= 1.3.0)

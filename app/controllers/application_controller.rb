@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_theme, :set_unread_message_count, :set_message
 
-  layout :determine_layout_for_request
-
   rescue_from ActiveRecord::ActiveRecordError, :with => :handle_exception
 
   helper_method :current_user, :logged_in?, :is_new_for_user?
@@ -117,14 +115,6 @@ class ApplicationController < ActionController::Base
         alert_with_flash message, *type
         redirect_to request.path, params
       end
-    end
-  end
-
-  def determine_layout_for_request
-    if request.xhr?
-      'api'
-    else
-      'application'
     end
   end
 
