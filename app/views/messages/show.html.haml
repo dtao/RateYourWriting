@@ -1,5 +1,7 @@
 - content_for(:header) do
-  %h1= "Message from #{@message.sender.name}"
+  %h1
+    Message from
+    %span.name= @message.sender.name
 
 %h3= @message.subject
 

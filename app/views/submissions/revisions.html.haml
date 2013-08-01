@@ -1,5 +1,7 @@
 - content_for(:header) do
-  %h1= "Revision history for #{@submission.title}"
+  %h1
+    Revision history for
+    %span.name= @submission.title
 
 .revisions
   - ([@submission] + @revisions).each_cons(2) do |latest, original|
