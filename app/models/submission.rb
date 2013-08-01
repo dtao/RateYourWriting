@@ -1,3 +1,5 @@
+require 'ext/hash'
+
 class Submission < ActiveRecord::Base
   KINDS = {
     'Poem' => 'P',
@@ -13,6 +15,7 @@ class Submission < ActiveRecord::Base
 
   has_many :votes
   has_many :comments
+  has_many :revisions
 
   validates_presence_of :user_id
   validates_inclusion_of :kind, :in => KINDS.values
@@ -26,6 +29,8 @@ class Submission < ActiveRecord::Base
   # of every submission into memory by default.
   before_save :set_length
 
+  after_save :create_revision
+
   def word_count
     (self.length / 5).to_i
   end
@@ -33,6 +38,20 @@ class Submission < ActiveRecord::Base
   def set_length
     if self.body_changed?
       self.length = self.body.length
+    end
+  end
+
+  def create_revision
+    revision_attributes = self.changed_attributes.slice('kind', 'title', 'body').compact
+
+    unless revision_attributes.empty?
+      revision_attributes.reverse_merge!({
+        'kind' => self.kind,
+        'title' => self.title,
+        'body' => self.body
+      })
+
+      self.revisions.create!(revision_attributes)
     end
   end
 

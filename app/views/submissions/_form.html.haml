@@ -6,7 +6,10 @@
     = f.text_field :title, :placeholder => 'Enter a title'
 
   .field
-    = markdown_editor(f, :body)
+    - if @submission.new_record?
+      = markdown_editor(f, :body)
+    - else
+      = markdown_editor_with_diff(f, :body)
 
   .field.published
     = f.label :published do

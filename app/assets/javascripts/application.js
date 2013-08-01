@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require diff_match_patch
 //= require codemirror
+//= require codemirror/modes/diff
 //= require codemirror/modes/markdown
 //= require codemirror/addons/placeholder
+//= require codemirror/addons/merge
 //= require marked
 //= require_tree .

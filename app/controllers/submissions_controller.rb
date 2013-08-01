@@ -68,6 +68,11 @@ class SubmissionsController < ApplicationController
     redirect_to submission
   end
 
+  def revisions
+    @submission = Submission.find(params[:id])
+    @revisions = @submission.revisions.order(:id => :desc)
+  end
+
   private
 
   def submission_params

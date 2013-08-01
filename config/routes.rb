@@ -19,6 +19,7 @@ RateYourWriting::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   post 'submissions/:id/vote' => 'submissions#vote', :as => :vote
   post 'submissions/:id/comment' => 'submissions#comment', :as => :comment
+  get 'submissions/:id/revisions' => 'submissions#revisions', :as => :revisions
   get 'users/:id/verify' => 'users#verify', :as => :verification
   get 'users/:id/message' => 'users#message', :as => :send_message
   post 'users/:id/preferences' => 'users#preferences', :as => :preferences

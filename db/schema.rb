@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801164508) do
+ActiveRecord::Schema.define(version: 20130801172914) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 20130801164508) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "revisions", force: true do |t|
+    t.integer  "submission_id"
+    t.string   "kind"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "revisions", ["submission_id"], name: "index_revisions_on_submission_id", using: :btree
 
   create_table "single_use_logins", force: true do |t|
     t.integer  "user_id"

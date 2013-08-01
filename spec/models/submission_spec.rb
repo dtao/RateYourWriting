@@ -74,4 +74,16 @@ describe Submission do
     jills_story.reload
     jills_story.last_comment.should match_time(jacks_comment.created_at)
   end
+
+  it 'creates a revision whenever changes are made' do
+    jacks_story = submissions("Jack's Story")
+    original_body = jacks_story.body
+
+    lambda {
+      jacks_story.update_attributes(:body => "I've made changes to my story.")
+      jacks_story.reload
+    }.should change(jacks_story.revisions, :count).by(1)
+
+    jacks_story.revisions.last.body.should == original_body
+  end
 end

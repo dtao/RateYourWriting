@@ -55,9 +55,23 @@ module ApplicationHelper
     })
   end
 
+  def markdown_editor_with_diff(form_helper, field_name)
+    render(:partial => 'layouts/markdown_editor_with_diff', :locals => {
+      :form_helper => form_helper,
+      :field_name => field_name
+    })
+  end
+
   def markdown_editor_with_preview(&content_block)
     render(:partial => 'layouts/markdown_editor_with_preview', :locals => {
       :content => capture(&content_block)
+    })
+  end
+
+  def diff_editor(content, original)
+    render(:partial => 'layouts/diff_editor', :locals => {
+      :content => content,
+      :original => original
     })
   end
 

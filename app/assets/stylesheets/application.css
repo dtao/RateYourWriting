@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require codemirror
+ *= require codemirror/merge
  *= require_tree .
  */

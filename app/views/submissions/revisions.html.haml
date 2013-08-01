@@ -1,0 +1,8 @@
+- content_for(:header) do
+  %h1= "Revision history for #{@submission.title}"
+
+.revisions
+  - ([@submission] + @revisions).each_cons(2) do |latest, original|
+    .revision
+      %h2= "#{time_ago_in_words(original.created_at)} ago"
+      = diff_editor(latest.body, original.body)
