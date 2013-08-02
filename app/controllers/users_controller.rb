@@ -11,15 +11,6 @@ class UsersController < ApplicationController
     @submissions = @submissions.published unless @user == current_user
   end
 
-  def create
-    User.transaction do
-      user = User.create!(user_params)
-      UserMailer.email_verification(user).deliver
-      alert "Check your e-mail, #{user.name}!", :success
-      redirect_to root_url(Env.url_options('http'))
-    end
-  end
-
   def update
     user = User.find(params[:id])
 

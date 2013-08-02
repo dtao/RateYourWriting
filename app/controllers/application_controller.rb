@@ -1,3 +1,5 @@
+require 'looks_like'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -29,24 +31,14 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  def login_user(user)
-    login = nil
+  def find_user(params)
+    user = nil
 
-    if user.email_verified?
-      login = SingleUseLogin.create!(:user => user)
-
-      user.update_attributes({
-        :previous_login => user.last_login,
-        :last_login => Time.now.utc
-      })
-
-      # Send the user back to the HTTP host w/ a single-use login token.
-      redirect_to login_with_token_url(Env.url_options('http').merge(:token => login.token))
-
-    else
-      alert 'You must verify your e-mail address.', :error
-      redirect_to root_url(Env.url_options('http'))
+    if LooksLike.email?(params[:name_or_email])
+      user = User.find_by_email(params[:name_or_email])
     end
+
+    user || User.find_by_name(params[:name_or_email])
   end
 
   def require_admin

@@ -92,3 +92,6 @@ RateYourWriting::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
+
+Cheapskate::PRODUCTION_HTTP_HOST = 'rateyourwriting.net'
+Cheapskate::PRODUCTION_HTTPS_HOST = 'ryw.herokuapp.com'

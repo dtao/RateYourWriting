@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/dtao/cheapskate.git
+  revision: 13732677733fd6272038885a18b3488cdf1d7957
+  specs:
+    cheapskate (0.0.1)
+      rails
+      randy
+
+GIT
   remote: git://github.com/dtao/query_diet.git
   revision: f335cd8fd9b4db145ecb906bb730ba730ea3aadc
   specs:
@@ -163,6 +171,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
+  cheapskate!
   codemirror-rails
   coffee-rails (~> 4.0.0)
   debugger
